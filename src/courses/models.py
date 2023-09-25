@@ -15,6 +15,7 @@ class Course(models.Model):
 
 
 class Lecture(models.Model):
+    """модель для лекций в курсе"""
     title = models.CharField('Заголовок', max_length=255)
     content = models.TextField('Текст лекции/ссылка на видео')
     images = models.ManyToManyField('Фотографии', related_name='lectures', upload_to='lecture_images/')
