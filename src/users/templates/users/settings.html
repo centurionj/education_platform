@@ -1,0 +1,157 @@
+{% extends 'users/base_dashboard.html' %}
+{% load static %}
+
+{% block button %}
+<div class="list-group list-group-dark list-group-borderless collapse-list">
+	<a class="list-group-item" href="https://eduport.webestica.com/student-dashboard.html"><i class="bi bi-ui-checks-grid fa-fw me-2"></i>Обучение</a>
+	<a class="list-group-item" href="https://eduport.webestica.com/student-quiz.html"><i class="bi bi-question-diamond fa-fw me-2"></i>Тесты</a>
+	<a class="list-group-item" href="https://eduport.webestica.com/student-bookmark.html"><i class="bi bi-cart-check fa-fw me-2"></i>Желания</a>
+	<a class="list-group-item active" href="https://eduport.webestica.com/instructor-edit-profile.html"><i class="bi bi-pencil-square fa-fw me-2"></i>Редактировать профиль</a>
+	<a class="list-group-item text-danger bg-danger-soft-hover" href="https://eduport.webestica.com/student-dashboard.html#"><i class="fas fa-sign-out-alt fa-fw me-2"></i>Выйти</a>
+</div>
+{% endblock %}
+
+{% block content %}
+			<!-- Main content START -->
+			<div class="col-xl-9">
+				<!-- Edit profile START -->
+				<div class="card bg-transparent border rounded-3">
+					<!-- Card header -->
+					<div class="card-header bg-transparent border-bottom">
+						<h3 class="card-header-title mb-0">Edit Profile</h3>
+					</div>
+					<!-- Card body START -->
+					<div class="card-body">
+						<!-- Form -->
+						<form class="row g-4">
+
+							<!-- Profile picture -->
+							<div class="col-12 justify-content-center align-items-center">
+								<label class="form-label">Аватар</label>
+								<div class="d-flex align-items-center">
+									<label class="position-relative me-4" for="uploadfile-1" title="Replace this pic">
+										<!-- Avatar place holder -->
+										<span class="avatar avatar-xl">
+											<img id="uploadfile-1-preview" class="avatar-img rounded-circle border border-white border-3 shadow" src="./settings_files/07.jpg" alt="">
+										</span>
+										<!-- Remove btn -->
+										<button type="button" class="uploadremove"><i class="bi bi-x text-white"></i></button>
+									</label>
+									<!-- Upload button -->
+									<label class="btn btn-primary-soft mb-0" for="uploadfile-1">Изменить</label>
+									<input id="uploadfile-1" class="form-control d-none" type="file">
+								</div>
+							</div>
+
+							<!-- Full name -->
+							<div class="col-12">
+								<label class="form-label">Полное имя</label>
+								<div class="input-group">
+									<input type="text" class="form-control" value="Lori" placeholder="First name">
+									<input type="text" class="form-control" value="Stevens" placeholder="Last name">
+								</div>
+							</div>
+
+							<!-- Username -->
+							<div class="col-md-6">
+								<label class="form-label">Имя пользователя</label>
+								<div class="input-group">
+									<input type="text" class="form-control" value="loristev">
+								</div>
+							</div>
+
+							<!-- Email id -->
+							<div class="col-md-6">
+								<label class="form-label">Email</label>
+								<input class="form-control" type="email" value="example@gmail.com" placeholder="Email">
+							</div>
+
+							<!-- Phone number -->
+							<div class="col-md-6">
+								<label class="form-label">Номер телефона</label>
+								<input type="text" class="form-control" value="1234567890" placeholder="Phone number">
+							</div>
+
+							<!-- Location -->
+							<div class="col-md-6">
+								<label class="form-label">Город</label>
+								<input class="form-control" type="text" value="California">
+							</div>
+
+							<!-- Save button -->
+							<div class="d-sm-flex justify-content-end">
+								<button type="button" class="btn btn-primary mb-0">Сохранить изменения</button>
+							</div>
+						</form>
+					</div>
+					<!-- Card body END -->
+				</div>
+				<!-- Edit profile END -->
+				
+				<div class="row g-4 mt-3">
+					<!-- EMail change START -->
+					<div class="col-lg-6">
+						<div class="card bg-transparent border rounded-3">
+							<!-- Card header -->
+							<div class="card-header bg-transparent border-bottom">
+								<h5 class="card-header-title mb-0">Изменить Email</h5>
+							</div>
+							<!-- Card body -->
+							<div class="card-body">
+								<p>Ваш действительный email<span class="text-primary">example@gmail.com</span></p>
+								<!-- Email -->
+								<form>
+									<label class="form-label">Введите новый email</label>
+									<input class="form-control" type="email" placeholder="Enter new email">
+									<div class="d-flex justify-content-end mt-4">
+										<button type="button" class="btn btn-primary mb-0">Сохранить</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					<!-- EMail change end -->
+
+					<!-- Password change START -->
+					<div class="col-lg-6">
+						<div class="card border bg-transparent rounded-3">
+							<!-- Card header -->
+							<div class="card-header bg-transparent border-bottom">
+								<h5 class="card-header-title mb-0">Сменить пароль</h5>
+							</div>
+							<!-- Card body START -->
+							<div class="card-body">
+								<!-- Current password -->
+								<div class="mb-3">
+									<label class="form-label">Существующий пароль</label>
+									<input class="form-control" type="password" placeholder="Enter current password">
+								</div>
+								<!-- New password -->
+								<div class="mb-3">
+									<label class="form-label">Новый пароль</label>
+									<div class="input-group">
+										<input class="form-control" type="password" placeholder="Enter new password">
+										<span class="input-group-text p-0 bg-transparent">
+											<i class="far fa-eye cursor-pointer p-2 w-40px"></i>
+										</span>
+									</div>
+									<div class="rounded mt-1" id="psw-strength"></div>
+								</div>
+								<!-- Confirm password -->
+								<div>
+									<label class="form-label">Подтвердите пароль</label>
+									<input class="form-control" type="password" placeholder="Enter new password">
+								</div>
+								<!-- Button -->
+								<div class="d-flex justify-content-end mt-4">
+									<button type="button" class="btn btn-primary mb-0">Сохранить</button>
+								</div>
+							</div>
+							<!-- Card body END -->
+						</div>
+					</div>
+					<!-- Password change end -->
+				</div>
+			</div>
+			<!-- Main content END -->
+{% endblock %}
