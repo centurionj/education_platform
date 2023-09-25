@@ -23,3 +23,6 @@ Pipfile.lock
 
 # Файлы окружения
 .env
+
+# База данных
+db.sqlite3
