@@ -9,9 +9,12 @@ class User(AbstractUser):
     image = models.ImageField('Фотография', upload_to='profile_images/')
     is_verify = models.BooleanField('Подтвержден', default=False)
     phone_number = models.CharField('Телефон', max_length=15, null=True, blank=True)
+    groups = models.ManyToManyField('Group', related_name='user_groups')
     description = models.TextField('Описание', null=True, blank=True)
-    grade = models.CharField('Ученая степень', null=True, blank=True)
-    role = models.CharField('Роль', choices=RoleStatuses.choices, default=RoleStatuses.STUDENT)
+    grade = models.CharField('Ученая степень', max_length=50, null=True, blank=True)
+    role = models.CharField('Роль', max_length=50, choices=RoleStatuses.choices, default=RoleStatuses.STUDENT)
+
+    # user_permissions = models.ManyToManyField('User', null=True, blank=True, related_name='custom_user_permissions')
 
     def __str__(self):
         return self.get_full_name()
@@ -52,7 +55,7 @@ class Student(User):
 class Group(models.Model):
     """модель группы"""
     title = models.CharField('Название группы', max_length=255)
-    students = models.ManyToManyField(Student, related_name='groups')
+    student = models.ManyToManyField(Student, related_name='group_students')
 
     def __str__(self):
         return self.title

@@ -3,6 +3,7 @@ venv/
 env/
 
 media/
+migrations/
 
 # локальные настройки
 local_settings.py
