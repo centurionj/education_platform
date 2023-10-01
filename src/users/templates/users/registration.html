@@ -1,7 +1,7 @@
 {% extends 'main/base.html' %}
 {% load static %}
 {% block title %}
-Регистрация
+{{title}}
 {% endblock %}
 
 {% block body %}
@@ -31,8 +31,13 @@
 						<div class="col-sm-10 col-xl-8 m-auto">
 							<!-- Title -->
 							<img src="{% static 'main/img/03.svg' %}" class="h-40px mb-2" alt="">
+							{% if form.errors %}
+							<h1 class="fs-2">Ошибка!</h1>
+							<p class="lead mb-4">{{ form.errors }}</p>
+							{% else %}
 							<h1 class="fs-2">Wellcome!</h1>
 							<p class="lead mb-4">Мы рады видеть вас! Зарегистрируйтесь для продолжения.</p>
+							{% endif %}
 
 							<!-- Form START -->
 							<form action="{% url 'registration' %}" method="post">
