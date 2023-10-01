@@ -1,4 +1,5 @@
 from django.db import models
+from autoslug import AutoSlugField
 
 from courses.models import Course
 from users.models import Group
@@ -7,7 +8,8 @@ from users.models import Group
 class Test(models.Model):
     name = models.CharField(max_length=255)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
-    groups = models.ManyToManyField(Group, related_name='tests')
+    groups = models.ManyToManyField(Group, related_name='testing')
+    slug = AutoSlugField(populate_from='name', unique=True, editable=False)
 
 
 class Question(models.Model):

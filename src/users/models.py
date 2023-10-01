@@ -1,20 +1,19 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
+
 from .enums import RoleStatuses
 
 
 class User(AbstractUser):
     """модель для пользователей"""
-    image = models.ImageField('Фотография', upload_to='profile_images/')
+    image = models.ImageField('Фотография', upload_to='profile_images/', null=True, blank=True)
     is_verify = models.BooleanField('Подтвержден', default=False)
     phone_number = models.CharField('Телефон', max_length=15, null=True, blank=True)
-    groups = models.ManyToManyField('Group', related_name='user_groups')
+    groups = models.ManyToManyField('Group', related_name='user_groups',  null=True, blank=True)
     description = models.TextField('Описание', null=True, blank=True)
     grade = models.CharField('Ученая степень', max_length=50, null=True, blank=True)
     role = models.CharField('Роль', max_length=50, choices=RoleStatuses.choices, default=RoleStatuses.STUDENT)
-
-    # user_permissions = models.ManyToManyField('User', null=True, blank=True, related_name='custom_user_permissions')
 
     def __str__(self):
         return self.get_full_name()
