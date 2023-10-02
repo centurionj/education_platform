@@ -1,4 +1,8 @@
 from django.contrib import admin
 
+from favourites.models import CourseLike
 
-# Register your models here.
+
+@admin.register(CourseLike)
+class CourseLikeAdmin(admin.ModelAdmin):
+    list_display = ('username', 'course', )

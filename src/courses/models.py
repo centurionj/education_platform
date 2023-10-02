@@ -31,7 +31,7 @@ class Lecture(models.Model):
     """модель для лекций в курсе"""
     title = models.CharField('Заголовок', max_length=255)
     content = models.TextField('Текст лекции/ссылка на видео')
-    images = models.ManyToManyField('Image', related_name='lectures')
+    images = models.ManyToManyField('Image', related_name='lectures', null=True, blank=True)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     slug = AutoSlugField(populate_from='title', unique=True, editable=False)
 
