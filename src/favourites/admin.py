@@ -5,4 +5,4 @@ from favourites.models import CourseLike
 
 @admin.register(CourseLike)
 class CourseLikeAdmin(admin.ModelAdmin):
-    list_display = ('username', 'course', )
+    list_display = ('user', 'course', )
