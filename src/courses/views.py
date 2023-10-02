@@ -1,7 +1,8 @@
 from django.views.generic.list import ListView
 
 from common.views import TitleMixin
-from . models import Course, Category
+
+from .models import Category, Course
 
 
 class CourseListView(TitleMixin, ListView):

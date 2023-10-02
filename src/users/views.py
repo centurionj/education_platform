@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 
 from common.views import TitleMixin
-from users.forms import UserRegistrationForm, UserLogingForm
+from users.forms import UserLogingForm, UserRegistrationForm
 from users.models import User
 
 
