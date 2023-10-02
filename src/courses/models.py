@@ -11,7 +11,17 @@ class Course(models.Model):
     description = models.TextField('Описание')
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
     groups = models.ManyToManyField('users.Group', related_name='courses')
-    slug = AutoSlugField(populate_from='name', unique=True, editable=False)
+    category = models.ForeignKey('Category', on_delete=models.CASCADE, null=True, blank=True)
+    slug = AutoSlugField(populate_from='title', unique=True, editable=False)
+
+    def __str__(self):
+        return self.title
+
+
+class Category(models.Model):
+    """"модель для категорий курсов"""
+    title = models.CharField(max_length=255, unique=True, null=True, blank=True)
+    slug = AutoSlugField(populate_from='title', unique=True, editable=False)
 
     def __str__(self):
         return self.title
@@ -23,7 +33,7 @@ class Lecture(models.Model):
     content = models.TextField('Текст лекции/ссылка на видео')
     images = models.ManyToManyField('Image', related_name='lectures')
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
-    slug = AutoSlugField(populate_from='name', unique=True, editable=False)
+    slug = AutoSlugField(populate_from='title', unique=True, editable=False)
 
     def __str__(self):
         return self.title
