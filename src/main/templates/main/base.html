@@ -110,9 +110,9 @@
 	<nav class="navbar navbar-expand-xl">
 		<div class="container-fluid px-3 px-xl-5">
 			<!-- Logo START -->
-			<a class="navbar-brand" href="https://eduport.webestica.com/index.html">
-				<img class="light-mode-item navbar-brand-item" src="./index_files/logo.svg" alt="logo">
-				<img class="dark-mode-item navbar-brand-item" src="./index_files/logo-light.svg" alt="logo">
+			<a class="navbar-brand" href="">
+				<img class="light-mode-item navbar-brand-item" src="https://plagiatfree.ru/upload/iblock/515/51541a645088bc8faea32b7f8bc7d00f/dvgups.jpg" alt="logo">
+				<img class="dark-mode-item navbar-brand-item" src="https://plagiatfree.ru/upload/iblock/515/51541a645088bc8faea32b7f8bc7d00f/dvgups.jpg" alt="logo">
 			</a>
 			<!-- Logo END -->
 
@@ -131,26 +131,13 @@
 				<!-- Nav Main menu START -->
 				<ul class="navbar-nav navbar-nav-scroll me-auto">
 					<!-- Nav item 1 Demos -->
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle active" href="https://eduport.webestica.com/index.html#" id="demoMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Demos</a>
-						<ul class="dropdown-menu" aria-labelledby="demoMenu">
-							<li> <a class="dropdown-item active" href="https://eduport.webestica.com/index.html">Home Default</a></li>
-							<li> <a class="dropdown-item" href="https://eduport.webestica.com/index-2.html">Home Education</a></li>
-							<li> <a class="dropdown-item" href="https://eduport.webestica.com/index-3.html">Home Academy</a></li>
-							<li> <a class="dropdown-item" href="https://eduport.webestica.com/index-4.html">Home Course</a></li>
-							<li> <a class="dropdown-item" href="https://eduport.webestica.com/index-5.html">Home University</a></li>
-							<li> <a class="dropdown-item" href="https://eduport.webestica.com/index-6.html">Home Kindergarten</a></li>
-							<li> <a class="dropdown-item" href="https://eduport.webestica.com/index-7.html">Home Landing</a></li>
-							<li> <a class="dropdown-item" href="https://eduport.webestica.com/index-8.html">Home Tutor</a></li>
-							<li> <a class="dropdown-item" href="https://eduport.webestica.com/index-9.html">Home School</a></li><li>
-							</li><li> <a class="dropdown-item" href="https://eduport.webestica.com/index-10.html">Home Abroad</a></li>
-							<li> <a class="dropdown-item" href="https://eduport.webestica.com/index-11.html">Home Workshop</a></li>
-						</ul>
-					</li>
+					<div class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle active" href="{% url 'index' %}" id="demoMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Главная</a>
+					</div>
 
 					<!-- Nav item 2 Pages -->
 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="https://eduport.webestica.com/index.html#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
+						<a class="nav-link dropdown-toggle" href="https://eduport.webestica.com/index.html#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Разделы</a>
 						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
 							<!-- Dropdown submenu -->
 							<li class="dropdown-submenu dropend">
@@ -431,18 +418,6 @@
 										</div>
 									</div>
 								</div>
-
-								<!-- Action box -->
-								<div class="col-12">
-									<div class="alert alert-success alert-dismissible fade show mt-2 mb-0 rounded-3" role="alert">
-										<!-- Avatar -->
-										<div class="avatar avatar-xs me-2">
-											<img class="avatar-img rounded-circle" src="./index_files/09.jpg" alt="avatar">
-										</div>
-										<!-- Info -->
-										The personality development class starts at 2:00 pm, click to <a href="https://eduport.webestica.com/index.html#" class="alert-link">Join Now</a>
-									</div>
-								</div>
 							</div>
 						</div>
 					</li>
@@ -494,7 +469,7 @@
 				<div class="nav my-3 my-xl-0 px-4 flex-nowrap align-items-center">
 					<div class="nav-item w-100">
 						<form class="position-relative">
-							<input class="form-control pe-5 bg-transparent" type="search" placeholder="Search" aria-label="Search">
+							<input class="form-control pe-5 bg-transparent" type="search" placeholder="Поиск по сайту" aria-label="Search">
 							<button class="bg-transparent p-2 position-absolute top-50 end-0 translate-middle-y border-0 text-primary-hover text-reset" type="submit">
 								<i class="fas fa-search fs-6 "></i>
 							</button>
@@ -512,6 +487,7 @@
 				</a>
 				<ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3" aria-labelledby="profileDropdown">
 					<!-- Profile info -->
+
 					<li class="px-3 mb-3">
 						<div class="d-flex align-items-center">
 							<!-- Avatar -->
@@ -519,8 +495,8 @@
 								<img class="avatar-img rounded-circle shadow" src="./index_files/01.jpg" alt="avatar">
 							</div>
 							<div>
-								<a class="h6" href="https://eduport.webestica.com/index.html#">Lori Ferguson</a>
-								<p class="small m-0">example@gmail.com</p>
+								<a class="h6" href="https://eduport.webestica.com/index.html#">{{user.first_name}} {{user.last_name}}</a>
+								<p class="small m-0">{{user.email}}</p>
 							</div>
 						</div>
 					</li>
@@ -530,6 +506,7 @@
 					<li><a class="dropdown-item" href="{% url 'setups' %}"><i class="bi bi-gear fa-fw me-2"></i>Настройки</a></li>
 					<li><a class="dropdown-item bg-danger-soft-hover" href="{% url 'logout' %}"><i class="bi bi-power fa-fw me-2"></i>Выйти</a></li>
 					<li> <hr class="dropdown-divider"></li>
+					
 					<!-- Dark mode options START -->
 					<li>
 						<div class="bg-light dark-mode-switch theme-icon-active d-flex align-items-center p-1 rounded mt-2">
@@ -578,9 +555,9 @@ Footer START -->
 			<!-- Widget 1 START -->
 			<div class="col-lg-3">
 				<!-- logo -->
-				<a class="me-0" href="https://eduport.webestica.com/index.html">
-					<img class="light-mode-item h-40px" src="./index_files/logo.svg" alt="logo">
-					<img class="dark-mode-item h-40px" src="./index_files/logo-light.svg" alt="logo">
+				<a class="me-0" href="">
+					<img class="light-mode-item h-40px" src="https://plagiatfree.ru/upload/iblock/515/51541a645088bc8faea32b7f8bc7d00f/dvgups.jpg" alt="logo">
+					<img class="dark-mode-item h-40px" src="https://plagiatfree.ru/upload/iblock/515/51541a645088bc8faea32b7f8bc7d00f/dvgups.jpg" alt="logo">
 				</a>
 				<!-- Social media icon -->
 				<ul class="list-inline mb-0 mt-3">
@@ -639,12 +616,12 @@ Footer START -->
 			<div class="container px-0">
 				<div class="d-lg-flex justify-content-between align-items-center py-3 text-center text-md-left">
 					<!-- copyright text -->
-					<div class="text-primary-hover"> Разработка <a href="https://www.webestica.com/" target="_blank" class="text-body">©2023 Карпухин Михаил</a>. Все права защищены. </div>
+					<div class="text-primary-hover"> Разработка <a href="" target="_blank" class="text-body">©2023 Карпухин Михаил</a>. Все права защищены. </div>
 					<!-- copyright links-->
 					<div class="justify-content-center mt-3 mt-lg-0">
 						<ul class="nav list-inline justify-content-center mb-0">
-							<li class="list-inline-item"><a class="nav-link" href="https://eduport.webestica.com/index.html#">Условия эксплуатации</a></li>
-							<li class="list-inline-item"><a class="nav-link pe-0" href="https://eduport.webestica.com/index.html#">Политика конфиденциальности</a></li>
+							<li class="list-inline-item"><a class="nav-link" href="">Условия эксплуатации</a></li>
+							<li class="list-inline-item"><a class="nav-link pe-0" href="">Политика конфиденциальности</a></li>
 						</ul>
 					</div>
 				</div>

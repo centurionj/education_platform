@@ -5,7 +5,7 @@ from . import views
 
 urlpatterns = [
     path('', views.CourseListView.as_view(), name='catalog'),
-    # path('product/<slug:slug>/', views.ProductDetailView.as_view(), name='product_detail'),
+    path('course/<slug:slug>/', views.CourseDetailView.as_view(), name='course_detail'),
     # path('parsing/', views.parsing, name='parsing'),
     # path('fill_bd/', views.fill_bd, name='fill_bd')
 ]

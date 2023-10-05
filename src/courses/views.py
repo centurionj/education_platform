@@ -1,8 +1,10 @@
+from django.views.generic import DetailView
 from django.views.generic.list import ListView
 
 from common.views import TitleMixin
 
 from .models import Category, Course
+from users.models import User, Teacher
 
 
 class CourseListView(TitleMixin, ListView):
@@ -20,4 +22,22 @@ class CourseListView(TitleMixin, ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(CourseListView, self).get_context_data()
         context['categories'] = Category.objects.all()
+        return context
+
+
+class CourseDetailView(DetailView):
+    """Детальный просмотр курса"""
+    model = Course
+    template_name = 'courses/course_detail.html'
+    context_object_name = 'course'
+    slug_url_kwarg = 'slug'
+
+    def get_context_data(self, **kwargs):
+        """Определяем контекст для курса, курсов этой категории и преподов к курсу"""
+        context = super().get_context_data(**kwargs)
+        course = context[self.context_object_name]
+        similar_courses = Course.objects.filter(category=course.category).exclude(pk=course.pk)
+        instructor = course.teacher
+        context['similar_courses'] = similar_courses
+        context['instructor'] = instructor
         return context
