@@ -23,13 +23,17 @@ Page Banner START -->
 						<!-- Avatar -->
 						<div class="col-auto">
 							<div class="avatar avatar-xxl position-relative mt-n3">
-								<img class="avatar-img rounded-circle border border-white border-3 shadow" src="./student_dashboard_files/09.jpg" alt="">
+								{% if user.image %}
+								<img class="avatar-img rounded-circle border border-white border-3 shadow" src="{{user.image.url}}" alt="">
+								{% else %}
+								<img class="avatar-img rounded-circle border border-white border-3 shadow" src="https://img.freepik.com/premium-vector/anonymous-user-circle-icon-vector-illustration-flat-style-with-long-shadow_520826-1931.jpg" alt="">
+								{% endif %}
 							</div>
 						</div>
 						<!-- Profile info -->
 						<div class="col d-sm-flex justify-content-between align-items-center">
 							<div>
-								<h1 class="my-1 fs-4">Имя Фамилия</h1>
+								<h1 class="my-1 fs-4">{{user.first_name}} {{user.last_name}}</h1>
 
 							</div>
 							<!-- Button -->

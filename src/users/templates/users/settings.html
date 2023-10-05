@@ -3,11 +3,11 @@
 
 {% block button %}
 <div class="list-group list-group-dark list-group-borderless collapse-list">
-	<a class="list-group-item" href="https://eduport.webestica.com/student-dashboard.html"><i class="bi bi-ui-checks-grid fa-fw me-2"></i>Обучение</a>
-	<a class="list-group-item" href="https://eduport.webestica.com/student-quiz.html"><i class="bi bi-question-diamond fa-fw me-2"></i>Тесты</a>
-	<a class="list-group-item" href="https://eduport.webestica.com/student-bookmark.html"><i class="bi bi-cart-check fa-fw me-2"></i>Желания</a>
-	<a class="list-group-item active" href="https://eduport.webestica.com/instructor-edit-profile.html"><i class="bi bi-pencil-square fa-fw me-2"></i>Редактировать профиль</a>
-	<a class="list-group-item text-danger bg-danger-soft-hover" href="https://eduport.webestica.com/student-dashboard.html#"><i class="fas fa-sign-out-alt fa-fw me-2"></i>Выйти</a>
+	<a class="list-group-item" href="{% url 'dashboard' %}"><i class="bi bi-ui-checks-grid fa-fw me-2"></i>Обучение</a>
+	<a class="list-group-item" href=""><i class="bi bi-question-diamond fa-fw me-2"></i>Тесты</a>
+	<a class="list-group-item" href=""><i class="bi bi-cart-check fa-fw me-2"></i>Желания</a>
+	<a class="list-group-item active" href="{% url 'setups' %}"><i class="bi bi-pencil-square fa-fw me-2"></i>Редактировать профиль</a>
+	<a class="list-group-item text-danger bg-danger-soft-hover" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt fa-fw me-2"></i>Выйти</a>
 </div>
 {% endblock %}
 
@@ -18,7 +18,7 @@
 				<div class="card bg-transparent border rounded-3">
 					<!-- Card header -->
 					<div class="card-header bg-transparent border-bottom">
-						<h3 class="card-header-title mb-0">Edit Profile</h3>
+						<h3 class="card-header-title mb-0">Редактировать</h3>
 					</div>
 					<!-- Card body START -->
 					<div class="card-body">
@@ -32,7 +32,12 @@
 									<label class="position-relative me-4" for="uploadfile-1" title="Replace this pic">
 										<!-- Avatar place holder -->
 										<span class="avatar avatar-xl">
-											<img id="uploadfile-1-preview" class="avatar-img rounded-circle border border-white border-3 shadow" src="./settings_files/07.jpg" alt="">
+											{% if user.image %}
+											<img id="uploadfile-1-preview" class="avatar-img rounded-circle border border-white border-3 shadow" src="{{user.image.url}}" alt="">
+								{% else %}
+											<img id="uploadfile-2-preview" class="avatar-img rounded-circle border border-white border-3 shadow" src="https://img.freepik.com/premium-vector/anonymous-user-circle-icon-vector-illustration-flat-style-with-long-shadow_520826-1931.jpg" alt="">
+
+								{% endif %}
 										</span>
 										<!-- Remove btn -->
 										<button type="button" class="uploadremove"><i class="bi bi-x text-white"></i></button>
@@ -47,8 +52,8 @@
 							<div class="col-12">
 								<label class="form-label">Полное имя</label>
 								<div class="input-group">
-									<input type="text" class="form-control" value="Lori" placeholder="First name">
-									<input type="text" class="form-control" value="Stevens" placeholder="Last name">
+									<input type="text" class="form-control" value="{{user.first_name}}" placeholder="{{user.first_name}}">
+									<input type="text" class="form-control" value="{{user.last_name}}" placeholder="{{user.last_name}}">
 								</div>
 							</div>
 
@@ -56,26 +61,26 @@
 							<div class="col-md-6">
 								<label class="form-label">Имя пользователя</label>
 								<div class="input-group">
-									<input type="text" class="form-control" value="loristev">
+									<input type="text" class="form-control" value="{{user.username}}">
 								</div>
 							</div>
 
 							<!-- Email id -->
 							<div class="col-md-6">
 								<label class="form-label">Email</label>
-								<input class="form-control" type="email" value="example@gmail.com" placeholder="Email">
+								<input class="form-control" type="email" value="{{user.email}}" placeholder="{{user.email}}">
 							</div>
 
 							<!-- Phone number -->
 							<div class="col-md-6">
 								<label class="form-label">Номер телефона</label>
-								<input type="text" class="form-control" value="1234567890" placeholder="Phone number">
+								<input type="text" class="form-control" value="{{user.phone_number}}" placeholder="{{user.phone_number}}">
 							</div>
 
 							<!-- Location -->
 							<div class="col-md-6">
 								<label class="form-label">Город</label>
-								<input class="form-control" type="text" value="California">
+								<input class="form-control" type="text" value="Добавить город в бд">
 							</div>
 
 							<!-- Save button -->
@@ -98,11 +103,10 @@
 							</div>
 							<!-- Card body -->
 							<div class="card-body">
-								<p>Ваш действительный email<span class="text-primary">example@gmail.com</span></p>
+								<p>Ваш действительный email <span class="text-primary">{{user.email}}</span></p>
 								<!-- Email -->
 								<form>
-									<label class="form-label">Введите новый email</label>
-									<input class="form-control" type="email" placeholder="Enter new email">
+									<input class="form-control" type="email" placeholder="Введите новый email">
 									<div class="d-flex justify-content-end mt-4">
 										<button type="button" class="btn btn-primary mb-0">Сохранить</button>
 									</div>

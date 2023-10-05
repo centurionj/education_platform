@@ -3,11 +3,11 @@
 
 {% block button %}
 <div class="list-group list-group-dark list-group-borderless collapse-list">
-	<a class="list-group-item" href="https://eduport.webestica.com/student-dashboard.html"><i class="bi bi-ui-checks-grid fa-fw me-2"></i>Обучение</a>
-	<a class="list-group-item" href="https://eduport.webestica.com/student-quiz.html"><i class="bi bi-question-diamond fa-fw me-2"></i>Тесты</a>
-	<a class="list-group-item active" href="https://eduport.webestica.com/student-bookmark.html"><i class="bi bi-cart-check fa-fw me-2"></i>Желания</a>
-	<a class="list-group-item" href="https://eduport.webestica.com/instructor-edit-profile.html"><i class="bi bi-pencil-square fa-fw me-2"></i>Редактировать профиль</a>
-	<a class="list-group-item text-danger bg-danger-soft-hover" href="https://eduport.webestica.com/student-dashboard.html#"><i class="fas fa-sign-out-alt fa-fw me-2"></i>Выйти</a>
+	<a class="list-group-item" href="{% url 'dashboard' %}"><i class="bi bi-ui-checks-grid fa-fw me-2"></i>Обучение</a>
+	<a class="list-group-item" href=""><i class="bi bi-question-diamond fa-fw me-2"></i>Тесты</a>
+	<a class="list-group-item active" href=""><i class="bi bi-cart-check fa-fw me-2"></i>Желания</a>
+	<a class="list-group-item" href="{% url 'setups' %}"><i class="bi bi-pencil-square fa-fw me-2"></i>Редактировать профиль</a>
+	<a class="list-group-item text-danger bg-danger-soft-hover" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt fa-fw me-2"></i>Выйти</a>
 </div>
 {% endblock %}
 
