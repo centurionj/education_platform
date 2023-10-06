@@ -110,7 +110,7 @@
 	<nav class="navbar navbar-expand-xl">
 		<div class="container-fluid px-3 px-xl-5">
 			<!-- Logo START -->
-			<a class="navbar-brand" href="">
+			<a class="navbar-brand" href="{% url 'index' %}">
 				<img class="light-mode-item navbar-brand-item" src="https://plagiatfree.ru/upload/iblock/515/51541a645088bc8faea32b7f8bc7d00f/dvgups.jpg" alt="logo">
 				<img class="dark-mode-item navbar-brand-item" src="https://plagiatfree.ru/upload/iblock/515/51541a645088bc8faea32b7f8bc7d00f/dvgups.jpg" alt="logo">
 			</a>
@@ -131,8 +131,8 @@
 				<!-- Nav Main menu START -->
 				<ul class="navbar-nav navbar-nav-scroll me-auto">
 					<!-- Nav item 1 Demos -->
-					<div class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle active" href="{% url 'index' %}" id="demoMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Главная</a>
+					<div class="nav-item ">
+						<a class="nav-link active" href="{% url 'index' %}" >Главная</a>
 					</div>
 
 					<!-- Nav item 2 Pages -->
@@ -483,30 +483,40 @@
 			<!-- Profile START -->
 			<div class="dropdown ms-1 ms-lg-0">
 				<a class="avatar avatar-sm p-0" href="https://eduport.webestica.com/index.html#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-					<img class="avatar-img rounded-circle" src="./index_files/01.jpg" alt="avatar">
+                    {% if user.image %}
+					<img class="avatar-img rounded-circle" src="{{ user.image.url }}" alt="avatar">
+                    {% else %}
+                        <img class="avatar-img rounded-circle" src="https://img.freepik.com/premium-vector/anonymous-user-circle-icon-vector-illustration-flat-style-with-long-shadow_520826-1931.jpg" alt="avatar">
+                    {% endif %}
 				</a>
 				<ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3" aria-labelledby="profileDropdown">
-					<!-- Profile info -->
+    <!-- Check if the user is authenticated (logged in) -->
+    {% if user.is_authenticated %}
+        <!-- Profile info -->
+        <li class="px-3 mb-3">
+            <div class="d-flex align-items-center">
+                <!-- Avatar -->
+                <div class="avatar me-3">
+                    <img class="avatar-img rounded-circle shadow" src="{{ user.image.url }}" alt="avatar">
+                </div>
+                <div>
+                    <a class="h6" href="https://eduport.webestica.com/index.html#">{{ user.first_name }} {{ user.last_name }}</a>
+                    <p class="small m-0">{{ user.email }}</p>
+                </div>
+            </div>
+        </li>
+        <li> <hr class="dropdown-divider"></li>
+        <!-- Links for logged-in users -->
+        <li><a class="dropdown-item" href="{% url 'dashboard' %}"><i class="bi bi-person fa-fw me-2"></i>Личный кабинет</a></li>
+        <li><a class="dropdown-item" href="{% url 'setups' %}"><i class="bi bi-gear fa-fw me-2"></i>Настройки</a></li>
+        <li><a class="dropdown-item bg-danger-soft-hover" href="{% url 'logout' %}"><i class="bi bi-power fa-fw me-2"></i>Выйти</a></li>
+        <li> <hr class="dropdown-divider"></li>
+    {% else %}
+        <!-- Links for non-logged-in users -->
+        <li><a class="dropdown-item" href="{% url 'login' %}">Логин</a></li>
+        <li><a class="dropdown-item" href="{% url 'registration' %}">Регистрация</a></li>
+    {% endif %}
 
-					<li class="px-3 mb-3">
-						<div class="d-flex align-items-center">
-							<!-- Avatar -->
-							<div class="avatar me-3">
-								<img class="avatar-img rounded-circle shadow" src="./index_files/01.jpg" alt="avatar">
-							</div>
-							<div>
-								<a class="h6" href="https://eduport.webestica.com/index.html#">{{user.first_name}} {{user.last_name}}</a>
-								<p class="small m-0">{{user.email}}</p>
-							</div>
-						</div>
-					</li>
-					<li> <hr class="dropdown-divider"></li>
-					<!-- Links -->
-					<li><a class="dropdown-item" href="{% url 'dashboard' %}"><i class="bi bi-person fa-fw me-2"></i>Личный кабинет</a></li>
-					<li><a class="dropdown-item" href="{% url 'setups' %}"><i class="bi bi-gear fa-fw me-2"></i>Настройки</a></li>
-					<li><a class="dropdown-item bg-danger-soft-hover" href="{% url 'logout' %}"><i class="bi bi-power fa-fw me-2"></i>Выйти</a></li>
-					<li> <hr class="dropdown-divider"></li>
-					
 					<!-- Dark mode options START -->
 					<li>
 						<div class="bg-light dark-mode-switch theme-icon-active d-flex align-items-center p-1 rounded mt-2">
@@ -531,6 +541,7 @@
 							</button>
 						</div>
 					</li>
+
 					<!-- Dark mode options END-->
 				</ul>
 			</div>

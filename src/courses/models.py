@@ -7,7 +7,7 @@ from users.models import Teacher
 class Course(models.Model):
     """модель для курсов"""
     title = models.CharField(max_length=255)
-    image = models.ImageField('Фотография')
+    image = models.ImageField('Фотография',  upload_to='courses_images/')
     description = models.TextField('Описание')
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
     groups = models.ManyToManyField('users.Group', related_name='courses')
