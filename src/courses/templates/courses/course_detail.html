@@ -84,51 +84,16 @@ Page content START -->
 											<!-- Card body -->
 											<div class="card-body">
 												<!-- Title -->
-												<h3 class="card-title mb-0">{{ instructor.first_name }} {{ instructor.last_name }}</h3>
-												<p class="mb-2">{{ instructor.grade }}</p>
-
-												<!-- Info -->
-												<ul class="list-inline">
-													<li class="list-inline-item">
-														<div class="d-flex align-items-center me-3 mb-2">
-															<span class="icon-md bg-orange bg-opacity-10 text-orange rounded-circle"><i class="fas fa-user-graduate"></i></span>
-															<span class="h6 fw-light mb-0 ms-2">9.1k</span>
-														</div>
-													</li>
-													<li class="list-inline-item">
-														<div class="d-flex align-items-center me-3 mb-2">
-															<span class="icon-md bg-warning bg-opacity-15 text-warning rounded-circle"><i class="fas fa-star"></i></span>
-															<span class="h6 fw-light mb-0 ms-2">4.5</span>
-														</div>
-													</li>
-													<li class="list-inline-item">
-														<div class="d-flex align-items-center me-3 mb-2">
-															<span class="icon-md bg-danger bg-opacity-10 text-danger rounded-circle"><i class="fas fa-play"></i></span>
-															<span class="h6 fw-light mb-0 ms-2">29 Courses</span>
-														</div>
-													</li>
-													<li class="list-inline-item">
-														<div class="d-flex align-items-center me-3 mb-2">
-															<span class="icon-md bg-info bg-opacity-10 text-info rounded-circle"><i class="fas fa-comment-dots"></i></span>
-															<span class="h6 fw-light mb-0 ms-2">205</span>
-														</div>
-													</li>
-												</ul>
+												<h3 class="card-title mb-0">{{ instructor.first_name }} {{ instructor.last_name }}</h3><br>
+												<p class="mb-2">{{ instructor.grade }}</p><br>
+                                                <h3 class="mb-3">О преподавателе</h3>
+                                                <p class="mb-3">{{ instructor.description }} </p>
 											</div>
 										</div>
 									</div>
 								</div>
-								<!-- Card END -->
-								
-								<!-- Instructor info -->
-								<h5 class="mb-3">О преподавателе</h5>
-								<p class="mb-3">Fulfilled direction use continual set him propriety continued. Saw met applauded favorite deficient engrossed concealed and her. Concluded boy perpetual old supposing. Farther related bed and passage comfort civilly. Dashboard see frankness objection abilities. As hastened oh produced prospect formerly up am. Placing forming nay looking old married few has. Margaret disposed of add screened rendered six say his striking confined. </p>
-								<p class="mb-3">As it so contrasted oh estimating instrument. Size like body someone had. Are conduct viewing boy minutes warrant the expense? Tolerably behavior may admit daughters offending her ask own. Praise effect wishes change way and any wanted.</p>
-								<!-- Email address -->
 							</div>
 							<!-- Content END -->
-
-
 						</div>
 					</div>
 					<!-- Tab contents END -->
@@ -230,7 +195,7 @@ Listed courses START -->
 								<!-- Hover element -->
 								<div class="card-img-overlay">
 									<div class="card-element-hover d-flex justify-content-end">
-										<a href="" class="icon-md bg-white rounded-circle text-center">
+										<a href="{% url 'favourites_update' course_id=similar_course.id %}" class="icon-md bg-white rounded-circle text-center">
 											<i class="bi bi-heart"></i>
 										</a>
 									</div>
@@ -239,11 +204,12 @@ Listed courses START -->
 							<div class="card-body">
 								<hr>
 								<!-- Title -->
-								<h5 class="card-title"><a href="{% url 'course_detail' slug=course.slug %}">{{ similar_course.title }}</a></h5>
+								<h5 class="card-title"><a href="{% url 'course_detail' slug=similar_course.slug %}">{{ similar_course.title }}</a></h5>
+                                <p>{{ similar_course.description|slice:"50" }}...</p>
 								<!-- Badge and Price -->
 								<div class="d-flex justify-content-between align-items-center">
-									<a href="{% url 'course_detail' slug=similar_course.slug %}" class="badge bg-info bg-opacity-10 text-info">
-                                        <i class="fas fa-circle small fw-bold me-2"></i>{{ similar_course.category }}</a>
+									<a href="" class="badge bg-info bg-opacity-10 text-info">
+                                        <i class="bi bi-circle-fill" style="color: #2156b0;"></i>  {{ similar_course.category }}</a>
 									<!-- Price -->
 {#									<h3 class="text-success mb-0">$342</h3>#}
 								</div>

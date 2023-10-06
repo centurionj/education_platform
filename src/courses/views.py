@@ -4,14 +4,13 @@ from django.views.generic.list import ListView
 from common.views import TitleMixin
 
 from .models import Category, Course
-from users.models import User, Teacher
 
 
 class CourseListView(TitleMixin, ListView):
     """отображение всех курсов"""
     model = Course
     template_name = 'courses/catalog.html'
-    paginate_by = 2
+    paginate_by = 6
     title = 'Каталог'
 
     def get_queryset(self):
