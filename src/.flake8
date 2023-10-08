@@ -26,7 +26,7 @@ exclude =
 accept-encodings = utf-8
 import-order-style = pep8
 
-ignore = C101,D104,D106,D107,W504,E203,E302,E501,E999,W503
+ignore = C101,D104,D106,D107,F401,W504,E203,E302,E501,E999,W503
 
 select = C,E,F,W,B,B950
 

@@ -18,10 +18,6 @@ __pycache__/
 # IDE
 .idea/
 
-# Pipenv
-Pipfile
-Pipfile.lock
-
 # Файлы окружения
 .env
 

@@ -7,11 +7,11 @@ from users.models import Teacher
 class Course(models.Model):
     """модель для курсов"""
     title = models.CharField(max_length=255)
-    image = models.ImageField('Фотография',  upload_to='courses_images/')
+    image = models.ImageField('Фотография', upload_to='courses_images/')
     description = models.TextField('Описание')
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
     groups = models.ManyToManyField('users.Group', related_name='courses')
-    category = models.ForeignKey('Category', on_delete=models.CASCADE, null=True, blank=True)
+    category = models.ForeignKey('Category', on_delete=models.CASCADE)
     slug = AutoSlugField(populate_from='title', unique=True, editable=False)
 
     def __str__(self):
@@ -20,7 +20,7 @@ class Course(models.Model):
 
 class Category(models.Model):
     """"модель для категорий курсов"""
-    title = models.CharField(max_length=255, unique=True, null=True, blank=True)
+    title = models.CharField(max_length=255, unique=True)
     slug = AutoSlugField(populate_from='title', unique=True, editable=False)
 
     def __str__(self):
