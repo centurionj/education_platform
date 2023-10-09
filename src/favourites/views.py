@@ -18,6 +18,6 @@ class FavouriteListView(ListView):
 
 
 @login_required
-def favourite_add(request, course_id):
-    CourseLike.update_or_create(user=request.user, course_id=course_id)
+def add_or_delete(request, course_id):
+    CourseLike.objects.delete_or_create(user=request.user, course_id=course_id)
     return HttpResponseRedirect(request.META['HTTP_REFERER'])

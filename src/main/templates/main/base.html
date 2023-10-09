@@ -482,7 +482,7 @@
 
 			<!-- Profile START -->
 			<div class="dropdown ms-1 ms-lg-0">
-				<a class="avatar avatar-sm p-0" href="https://eduport.webestica.com/index.html#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
+				<a class="avatar avatar-sm p-0" href="" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
                     {% if user.image %}
 					<img class="avatar-img rounded-circle" src="{{ user.image.url }}" alt="avatar">
                     {% else %}
@@ -497,10 +497,14 @@
             <div class="d-flex align-items-center">
                 <!-- Avatar -->
                 <div class="avatar me-3">
+                    {% if user.image %}
                     <img class="avatar-img rounded-circle shadow" src="{{ user.image.url }}" alt="avatar">
+                     {% else %}
+                        <img class="avatar-img rounded-circle" src="https://img.freepik.com/premium-vector/anonymous-user-circle-icon-vector-illustration-flat-style-with-long-shadow_520826-1931.jpg" alt="avatar">
+                    {% endif %}
                 </div>
                 <div>
-                    <a class="h6" href="https://eduport.webestica.com/index.html#">{{ user.first_name }} {{ user.last_name }}</a>
+                    <a class="h6" href="">{{ user.first_name }} {{ user.last_name }}</a>
                     <p class="small m-0">{{ user.email }}</p>
                 </div>
             </div>
@@ -513,7 +517,7 @@
         <li> <hr class="dropdown-divider"></li>
     {% else %}
         <!-- Links for non-logged-in users -->
-        <li><a class="dropdown-item" href="{% url 'login' %}">Логин</a></li>
+        <li><a class="dropdown-item" href="{% url 'login' %}">Вход</a></li>
         <li><a class="dropdown-item" href="{% url 'registration' %}">Регистрация</a></li>
     {% endif %}
 
