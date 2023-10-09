@@ -2,8 +2,6 @@ from django.views.generic import DetailView
 from django.views.generic.list import ListView
 
 from common.views import TitleMixin
-from favourites.models import CourseLike
-
 from .models import Category, Course
 
 

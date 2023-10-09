@@ -512,7 +512,7 @@
         <li> <hr class="dropdown-divider"></li>
         <!-- Links for logged-in users -->
         <li><a class="dropdown-item" href="{% url 'dashboard' %}"><i class="bi bi-person fa-fw me-2"></i>Личный кабинет</a></li>
-        <li><a class="dropdown-item" href="{% url 'setups' %}"><i class="bi bi-gear fa-fw me-2"></i>Настройки</a></li>
+        <li><a class="dropdown-item" href="{% url 'setups' pk=user.pk %}"><i class="bi bi-gear fa-fw me-2"></i>Настройки</a></li>
         <li><a class="dropdown-item bg-danger-soft-hover" href="{% url 'logout' %}"><i class="bi bi-power fa-fw me-2"></i>Выйти</a></li>
         <li> <hr class="dropdown-divider"></li>
     {% else %}

@@ -6,7 +6,7 @@
 	<a class="list-group-item" href="{% url 'dashboard' %}"><i class="bi bi-ui-checks-grid fa-fw me-2"></i>Обучение</a>
 	<a class="list-group-item" href=""><i class="bi bi-question-diamond fa-fw me-2"></i>Тесты</a>
 	<a class="list-group-item" href="{% url 'favourites' user_id=user.id %}"><i class="bi bi-cart-check fa-fw me-2"></i>Желания</a>
-	<a class="list-group-item active" href="{% url 'setups' %}"><i class="bi bi-pencil-square fa-fw me-2"></i>Редактировать профиль</a>
+	<a class="list-group-item active" href="{% url 'setups' pk=user.pk %}"><i class="bi bi-pencil-square fa-fw me-2"></i>Редактировать профиль</a>
 	<a class="list-group-item text-danger bg-danger-soft-hover" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt fa-fw me-2"></i>Выйти</a>
 </div>
 {% endblock %}
@@ -23,8 +23,8 @@
 					<!-- Card body START -->
 					<div class="card-body">
 						<!-- Form -->
-						<form class="row g-4">
-
+						<form class="row g-4" action="{% url 'setups' pk=user.pk %}" method="post">
+                        {% csrf_token %}
 							<!-- Profile picture -->
 							<div class="col-12 justify-content-center align-items-center">
 								<label class="form-label">Аватар</label>
@@ -50,107 +50,82 @@
 
 							<!-- Full name -->
 							<div class="col-12">
-								<label class="form-label">Полное имя</label>
+								<label for="{{ form.first_name.id_for_label }} {{ form.last_name.id_for_label }}" class="form-label">Полное имя</label>
 								<div class="input-group">
-									<input type="text" class="form-control" value="{{user.first_name}}" placeholder="{{user.first_name}}">
-									<input type="text" class="form-control" value="{{user.last_name}}" placeholder="{{user.last_name}}">
+									{{ form.first_name }}
+									{{ form.last_name }}
 								</div>
 							</div>
 
 							<!-- Username -->
 							<div class="col-md-6">
-								<label class="form-label">Имя пользователя</label>
+								<label for="{{ form.username.id_for_label  }}" class="form-label">Имя пользователя</label>
 								<div class="input-group">
-									<input type="text" class="form-control" value="{{user.username}}">
+									{{ form.username }}
 								</div>
 							</div>
 
 							<!-- Email id -->
 							<div class="col-md-6">
-								<label class="form-label">Email</label>
-								<input class="form-control" type="email" value="{{user.email}}" placeholder="{{user.email}}">
+								<label for="{{ form.email.id_for_label  }}" class="form-label">Email</label>
+								{{ form.email }}
 							</div>
 
 							<!-- Phone number -->
 							<div class="col-md-6">
-								<label class="form-label">Номер телефона</label>
-								<input type="text" class="form-control" value="{{user.phone_number}}" placeholder="{{user.phone_number}}">
+								<label for="{{ form.phone_number.id_for_label  }}" class="form-label">Номер телефона</label>
+								{{ form.phone_number }}
 							</div>
 
-							<!-- Location -->
+							<!-- Description -->
 							<div class="col-md-6">
-								<label class="form-label">Город</label>
-								<input class="form-control" type="text" value="Добавить город в бд">
+								<label for="{{ form.description.id_for_label  }}" class="form-label">Дополнительная информация</label>
+								{{ form.description }}
 							</div>
 
 							<!-- Save button -->
 							<div class="d-sm-flex justify-content-end">
-								<button type="button" class="btn btn-primary mb-0">Сохранить изменения</button>
+								<button type="submit" class="btn btn-primary mb-0">Сохранить изменения</button>
 							</div>
 						</form>
 					</div>
 					<!-- Card body END -->
 				</div>
 				<!-- Edit profile END -->
-				
-				<div class="row g-4 mt-3">
-					<!-- EMail change START -->
-					<div class="col-lg-6">
-						<div class="card bg-transparent border rounded-3">
-							<!-- Card header -->
-							<div class="card-header bg-transparent border-bottom">
-								<h5 class="card-header-title mb-0">Изменить Email</h5>
-							</div>
-							<!-- Card body -->
-							<div class="card-body">
-								<p>Ваш действительный email <span class="text-primary">{{user.email}}</span></p>
-								<!-- Email -->
-								<form>
-									<input class="form-control" type="email" placeholder="Введите новый email">
-									<div class="d-flex justify-content-end mt-4">
-										<button type="button" class="btn btn-primary mb-0">Сохранить</button>
-									</div>
-								</form>
-							</div>
-						</div>
-					</div>
-					<!-- EMail change end -->
 
 					<!-- Password change START -->
-					<div class="col-lg-6">
+					<div class="col-lg-12">
 						<div class="card border bg-transparent rounded-3">
 							<!-- Card header -->
 							<div class="card-header bg-transparent border-bottom">
 								<h5 class="card-header-title mb-0">Сменить пароль</h5>
 							</div>
 							<!-- Card body START -->
-							<div class="card-body">
+							<form class="card-body" action="{% url 'reset_password' pk=user.pk %}" method="post">
+                                {% csrf_token %}
 								<!-- Current password -->
 								<div class="mb-3">
-									<label class="form-label">Существующий пароль</label>
-									<input class="form-control" type="password" placeholder="Enter current password">
+									<label for="{{ form.old_password.id_for_label }}" class="form-label">Существующий пароль</label>
+                                    {{form.old_password}}
 								</div>
 								<!-- New password -->
 								<div class="mb-3">
-									<label class="form-label">Новый пароль</label>
+									<label for="{{ form.new_password.id_for_label }}" class="form-label">Новый пароль</label>
 									<div class="input-group">
-										<input class="form-control" type="password" placeholder="Enter new password">
-										<span class="input-group-text p-0 bg-transparent">
-											<i class="far fa-eye cursor-pointer p-2 w-40px"></i>
-										</span>
+										{{form.new_password}}
 									</div>
 									<div class="rounded mt-1" id="psw-strength"></div>
 								</div>
 								<!-- Confirm password -->
 								<div>
-									<label class="form-label">Подтвердите пароль</label>
-									<input class="form-control" type="password" placeholder="Enter new password">
+									<label for="{{ form.confirm_password.id_for_label }}" class="form-label">Подтвердите пароль</label>
+									 {{ form.confirm_password }}
 								</div>
 								<!-- Button -->
 								<div class="d-flex justify-content-end mt-4">
-									<button type="button" class="btn btn-primary mb-0">Сохранить</button>
+									<button type="submit" class="btn btn-primary mb-0">Сохранить</button>
 								</div>
-							</div>
+							</form>
 							<!-- Card body END -->
 						</div>
 					</div>

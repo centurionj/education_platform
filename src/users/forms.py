@@ -1,5 +1,10 @@
 from django import forms
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import (
+    AuthenticationForm,
+    PasswordChangeForm,
+    UserChangeForm,
+    UserCreationForm,
+)
 
 from users.models import User
 
@@ -17,7 +22,7 @@ class UserRegistrationForm(UserCreationForm):
     password1 = forms.CharField(widget=forms.PasswordInput(attrs={
         'class': 'form-control border-0 bg-light rounded-end ps-1', 'placeholder': 'Пароль'}))
     password2 = forms.CharField(widget=forms.PasswordInput(attrs={
-        'class': 'form-control border-0 bg-light rounded-end ps-1', 'placeholder': 'Пароль'}))
+        'class': 'form-control border-0 bg-light rounded-end ps-1', 'placeholder': 'Подтвердить пароль'}))
 
     class Meta:
         model = User
@@ -39,3 +44,46 @@ class UserLogingForm(AuthenticationForm):
     class Meta:
         model = User
         fields = ('username', 'password')
+
+
+class UserEditForm(UserChangeForm):
+    """Форма для изменений профиля"""
+    first_name = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'form-control', 'placeholder': '{{user.first_name}}', 'value': '{{user.first_name}}'}))
+    last_name = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'form-control ', 'placeholder': '{{user.last_name}}', 'value': '{{user.last_name}}'}))
+    username = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'form-control', 'placeholder': '{{user.username}}', 'value': '{{user.username}}'}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={
+        'class': 'form-control', 'placeholder': 'E-mail', '{{user.email}}': '{{user.email}}'}))
+    phone_number = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'form-control', 'placeholder': '{{user.phone_number}}', 'value': '{{user.phone_number}}'}), required=False)
+    description = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'form-control', 'placeholder': 'Описание', 'value': '{{user.description}}'}), required=False)
+
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name', 'username', 'email', 'phone_number', 'description')
+
+    def save(self, commit=True):
+        user = super(UserEditForm, self).save(commit=True)
+        return user
+
+
+class UserChangePasswordForm(PasswordChangeForm):
+    """Смена пароля пользователем"""
+    old_password = forms.CharField(widget=forms.PasswordInput(attrs={
+        'class': 'form-control', 'placeholder': 'Старый пароль'}))
+    new_password1 = forms.CharField(widget=forms.PasswordInput(attrs={
+        'class': 'form-control', 'placeholder': 'Новый пароль'}))
+    new_password2 = forms.CharField(widget=forms.PasswordInput(attrs={
+        'class': 'form-control', 'placeholder': 'Повторите новый пароль'}))
+
+    class Meta:
+        model = User
+        fields = ()
+
+    def save(self, commit=True):
+        if self.fields.is_valid():
+            user = super(UserChangePasswordForm, self).save(commit=True)
+            return user
