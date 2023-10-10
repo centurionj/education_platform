@@ -260,11 +260,11 @@
                     {% if categories %}
                         {% for category in categories %}
                             <li class="nav-item me-2 me-sm-5" role="presentation">
-                                <button class="nav-link mb-2 mb-md-0 " id="course-pills-tab-{{ category.pk }}"
+                                <button class="nav-link mb-2 mb-md-0 {% if forloop.first %}active{% endif %}" id="course-pills-tab-{{ category.pk }}"
                                         data-bs-toggle="pill"
                                         data-bs-target="#course-pills-tabs-{{ category.pk }}" type="button" role="tab"
                                         aria-controls="course-pills-tabs-{{ category.pk }}"
-                                        aria-selected="true">{{ category.title }}
+                                        aria-selected="{% if forloop.first %}true{% else %}false{% endif %}">{{ category.title }}
                                 </button>
                             </li>
                         {% endfor %}
@@ -277,7 +277,7 @@
                     <div class="tab-content" id="course-pills-tabContent">
                         <!-- Content START -->
                         {% for category in categories %}
-                            <div class="tab-pane fade" id="course-pills-tabs-{{ category.pk }}" role="tabpanel"
+                            <div class="tab-pane fade {% if forloop.first %}active show{% endif %}" id="course-pills-tabs-{{ category.pk }}" role="tabpanel"
                                  aria-labelledby="course-pills-tab-{{ category.pk }}">
                                 <div class="row g-4">
                                     <!-- Card item START -->
@@ -394,8 +394,8 @@
                     <!-- Slider START -->
                     <div class="tiny-slider arrow-round arrow-blur arrow-hover">
                         <div class="tns-outer" id="tns1-ow">
-                            <div class="tns-liveregion tns-visually-hidden" aria-live="polite" aria-atomic="true">slide
-                                <span class="current">9 to 13</span> of 4
+                            <div class="tns-liveregion tns-visually-hidden" aria-live="polite" aria-atomic="true">
+                                <span class="current"></span>
                             </div>
                             <div id="tns1-mw" class="tns-ovh">
                                 <div class="tns-inner" id="tns1-iw">
@@ -409,20 +409,22 @@
                                                 <div class="tns-item tns-slide-cloned" aria-hidden="true" tabindex="-1">
                                                     <div class="card action-trigger-hover border bg-transparent">
                                                         <!-- Image -->
-                                                        <img src="{{ teacher.image.url }}" class="card-img-top"
-                                                             alt="course image">
+                                                        {% if teacher.image %}
+                                                        <img src="{{ teacher.image.url }}" class="card-img-top" alt="course image">
+                                                        {% else %}
+                                                        <img src="https://img.freepik.com/premium-vector/anonymous-user-circle-icon-vector-illustration-flat-style-with-long-shadow_520826-1931.jpg" class="card-img-top" alt="course image">
+                                                        {% endif %}
                                                         <!-- Card body -->
                                                         <div class="card-body pb-0">
                                                             <!-- Badge and favorite -->
                                                             <div class="d-flex justify-content-between mb-3">
 									            <span class="hstack gap-2">
-										            <h5 href="https://eduport.webestica.com/index.html#"
-                                                        class="badge bg-primary bg-opacity-10 text-primary">{{ teacher.grade }}</h5>
+										            <h5 class="badge bg-primary bg-opacity-10 text-primary">{{ teacher.grade }}</h5>
 									            </span>
                                                             </div>
                                                             <!-- Title -->
                                                             <h5 class="card-title"><a
-                                                                    href="https://eduport.webestica.com/index.html#">{{ teacher.first_name }} {{ teacher.last_name }}</a>
+                                                                    href="">{{ teacher.first_name }} {{ teacher.last_name }}</a>
                                                             </h5>
                                                             <!-- Rating -->
                                                             <div class="d-flex justify-content-between mb-2">

@@ -60,10 +60,11 @@ class UserEditForm(UserChangeForm):
         'class': 'form-control', 'placeholder': '{{user.phone_number}}', 'value': '{{user.phone_number}}'}), required=False)
     description = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control', 'placeholder': 'Описание', 'value': '{{user.description}}'}), required=False)
+    image = forms.ImageField(widget=forms.FileInput(attrs={'id': 'uploadfile-1', 'class': 'form-control d-none'}), required=False)
 
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'username', 'email', 'phone_number', 'description')
+        fields = ('first_name', 'last_name', 'username', 'email', 'phone_number', 'description', 'image')
 
     def save(self, commit=True):
         user = super(UserEditForm, self).save(commit=True)
@@ -81,7 +82,7 @@ class UserChangePasswordForm(PasswordChangeForm):
 
     class Meta:
         model = User
-        fields = ()
+        fields = ('old_password', 'new_password1', 'new_password2')
 
     def save(self, commit=True):
         if self.fields.is_valid():

@@ -1,7 +1,7 @@
 from django.views.generic.list import ListView
-from common.views import TitleMixin
 
-from courses.models import Course, Category
+from common.views import TitleMixin
+from courses.models import Category, Course
 from users.models import User
 
 

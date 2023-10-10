@@ -40,47 +40,47 @@
 								{% endif %}
 										</span>
 										<!-- Remove btn -->
-										<button type="button" class="uploadremove"><i class="bi bi-x text-white"></i></button>
+										<a href="{% url 'delete_image' %}" class="uploadremove"><i class="bi bi-x text-white"></i></a>
 									</label>
 									<!-- Upload button -->
 									<label class="btn btn-primary-soft mb-0" for="uploadfile-1">Изменить</label>
-									<input id="uploadfile-1" class="form-control d-none" type="file">
+                                    {{form.image}}
 								</div>
 							</div>
 
 							<!-- Full name -->
 							<div class="col-12">
-								<label for="{{ form.first_name.id_for_label }} {{ form.last_name.id_for_label }}" class="form-label">Полное имя</label>
+								<label for="{{ user_edit_form.first_name.id_for_label }} {{ user_edit_form.last_name.id_for_label }}" class="form-label">Полное имя</label>
 								<div class="input-group">
-									{{ form.first_name }}
-									{{ form.last_name }}
+									{{ user_edit_form.first_name }}
+									{{ user_edit_form.last_name }}
 								</div>
 							</div>
 
 							<!-- Username -->
 							<div class="col-md-6">
-								<label for="{{ form.username.id_for_label  }}" class="form-label">Имя пользователя</label>
+								<label for="{{ user_edit_form.username.id_for_label  }}" class="form-label">Имя пользователя</label>
 								<div class="input-group">
-									{{ form.username }}
+									{{ user_edit_form.username }}
 								</div>
 							</div>
 
 							<!-- Email id -->
 							<div class="col-md-6">
-								<label for="{{ form.email.id_for_label  }}" class="form-label">Email</label>
-								{{ form.email }}
+								<label for="{{ user_edit_form.email.id_for_label  }}" class="form-label">Email</label>
+								{{ user_edit_form.email }}
 							</div>
 
 							<!-- Phone number -->
 							<div class="col-md-6">
-								<label for="{{ form.phone_number.id_for_label  }}" class="form-label">Номер телефона</label>
-								{{ form.phone_number }}
+								<label for="{{ user_edit_form.phone_number.id_for_label  }}" class="form-label">Номер телефона</label>
+								{{ user_edit_form.phone_number }}
 							</div>
 
 							<!-- Description -->
 							<div class="col-md-6">
-								<label for="{{ form.description.id_for_label  }}" class="form-label">Дополнительная информация</label>
-								{{ form.description }}
+								<label for="{{ user_edit_form.description.id_for_label  }}" class="form-label">Дополнительная информация</label>
+								{{ user_edit_form.description }}
 							</div>
 
 							<!-- Save button -->
@@ -105,21 +105,21 @@
                                 {% csrf_token %}
 								<!-- Current password -->
 								<div class="mb-3">
-									<label for="{{ form.old_password.id_for_label }}" class="form-label">Существующий пароль</label>
-                                    {{form.old_password}}
+									<label for="{{ password_change_form.old_password.id_for_label }}" class="form-label">Существующий пароль</label>
+                                    {{password_change_form.old_password}}
 								</div>
 								<!-- New password -->
 								<div class="mb-3">
-									<label for="{{ form.new_password.id_for_label }}" class="form-label">Новый пароль</label>
+									<label for="{{ password_change_form.new_password.id_for_label }}" class="form-label">Новый пароль</label>
 									<div class="input-group">
-										{{form.new_password}}
+										{{password_change_form.new_password1}}
 									</div>
 									<div class="rounded mt-1" id="psw-strength"></div>
 								</div>
 								<!-- Confirm password -->
 								<div>
-									<label for="{{ form.confirm_password.id_for_label }}" class="form-label">Подтвердите пароль</label>
-									 {{ form.confirm_password }}
+									<label for="{{ password_change_form.confirm_password.id_for_label }}" class="form-label">Подтвердите пароль</label>
+									 {{ password_change_form.new_password2 }}
 								</div>
 								<!-- Button -->
 								<div class="d-flex justify-content-end mt-4">

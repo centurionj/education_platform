@@ -1,6 +1,6 @@
+from PIL import Image
 from autoslug import AutoSlugField
 from django.db import models
-from PIL import Image
 
 from users.models import Teacher
 
