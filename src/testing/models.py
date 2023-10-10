@@ -7,8 +7,8 @@ from users.models import Group
 
 class Test(models.Model):
     name = models.CharField(max_length=255)
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
-    groups = models.ManyToManyField(Group, related_name='testing')
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, null=True, blank=True)
+    groups = models.ManyToManyField(Group, related_name='testing', null=True, blank=True)
     slug = AutoSlugField(populate_from='name', unique=True, editable=False)
 
 
