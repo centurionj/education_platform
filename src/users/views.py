@@ -1,19 +1,20 @@
 from django.contrib.auth.views import LoginView, PasswordResetView
 from django.contrib.messages.views import SuccessMessageMixin
-from django.shortcuts import render
-from django.urls import reverse_lazy, reverse
-from django.views.generic.edit import CreateView, UpdateView
+from django.db.models import Q
 from django.shortcuts import HttpResponseRedirect
-
+from django.urls import reverse_lazy
+from django.views.generic import ListView
+from django.views.generic.edit import CreateView, UpdateView
 
 from common.views import TitleMixin
+from courses.models import Course
 from users.forms import (
     UserChangePasswordForm,
     UserEditForm,
     UserLogingForm,
     UserRegistrationForm,
 )
-from users.models import User
+from users.models import Group, User
 
 
 class UserRegistrationView(TitleMixin, SuccessMessageMixin, CreateView):
@@ -35,8 +36,18 @@ class UserLoginView(TitleMixin, LoginView):
     title = 'Авторизация'
 
 
-def dashboard(request):
-    return render(request, 'users/dashboard.html')
+class DashboardListView(TitleMixin, ListView):
+    """Отображение всех курсов в личном кабинете"""
+    model = Course
+    template_name = 'users/dashboard.html'
+    paginate_by = 5
+    context_object_name = 'courses'
+    title = 'Личный кабинет'
+
+    def get_queryset(self):
+        user = self.request.user
+        course_filter = Q(groups__user_groups=user)
+        return Course.objects.filter(course_filter)
 
 
 class UserUpdateView(TitleMixin, UpdateView):

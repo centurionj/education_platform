@@ -20,6 +20,7 @@
 			<div class="table-responsive border-0">
 				<table class="table table-dark-gray align-middle p-4 mb-0 table-hover">
 					<!-- Table head -->
+                {% if courses %}
 					<thead>
 						<tr>
 							<th scope="col" class="border-0 rounded-start">Название</th>
@@ -28,21 +29,24 @@
 							<th scope="col" class="border-0 rounded-end">Действия</th>
 						</tr>
 					</thead>
+                {% endif %}
 
 					<!-- Table body START -->
 					<tbody>
+                    {% if courses %}
 						<!-- Table item -->
+                        {% for course in courses %}
 						<tr>
 							<!-- Table data -->
 							<td>
 								<div class="d-flex align-items-center">
 									<!-- Image -->
 									<div class="w-100px">
-										<img src="./student_dashboard_files/08.jpg" class="rounded" alt="">
+										<img src="{{course.image.url}}" class="rounded" alt="">
 									</div>
 									<div class="mb-0 ms-2">
 										<!-- Title -->
-										<h6><a href="https://eduport.webestica.com/student-dashboard.html#">Building Scalable APIs with GraphQL</a></h6>
+										<h6><a href="{% url 'course_detail' slug=course.slug %}">{{ course.title }}</a></h6>
 										<!-- Info -->
 										<div class="overflow-hidden">
 											<h6 class="mb-0 text-end">85%</h6>
@@ -56,159 +60,31 @@
 							</td>
 
 							<!-- Table data -->
-							<td>56</td>
+							<td>Посчитать</td>
 
 							<!-- Table data -->
-							<td>40</td>
-
-							<!-- Table data -->
-							<td>
-								<a href="https://eduport.webestica.com/student-dashboard.html#" class="btn btn-sm btn-primary-soft me-1 mb-1 mb-md-0"><i class="bi bi-play-circle me-1"></i>Continue</a>
-							</td>
-						</tr>
-
-						<!-- Table item -->
-						<tr>
-							<!-- Table data -->
-							<td>
-								<div class="d-flex align-items-center">
-									<!-- Image -->
-									<div class="w-100px">
-										<img src="./student_dashboard_files/03.jpg" class="rounded" alt="">
-									</div>
-									<div class="mb-0 ms-2">
-										<!-- Title -->
-										<h6><a href="https://eduport.webestica.com/student-dashboard.html#">Create a Design System in Figma</a></h6>
-										<!-- Info -->
-										<div class="overflow-hidden">
-											<h6 class="mb-0 text-end">100%</h6>
-											<div class="progress progress-sm bg-primary bg-opacity-10">
-												<div class="progress-bar bg-primary aos aos-init" role="progressbar" data-aos="slide-right" data-aos-delay="200" data-aos-duration="1000" data-aos-easing="ease-in-out" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</td>
-
-							<!-- Table data -->
-							<td>42</td>
-
-							<!-- Table data -->
-							<td>42</td>
+							<td>Посчитать</td>
 
 							<!-- Table data -->
 							<td>
-								<button class="btn btn-sm btn-success me-1 mb-1 mb-x;-0 disabled"><i class="bi bi-check me-1"></i>Завершен</button>
+								<a href="" class="btn btn-sm btn-primary-soft me-1 mb-1 mb-md-0"><i class="bi bi-play-circle me-1"></i>Continue</a>
+                                <button class="btn btn-sm btn-success me-1 mb-1 mb-x;-0 disabled"><i class="bi bi-check me-1"></i>Завершен</button>
 								<a href="https://eduport.webestica.com/student-dashboard.html#" class="btn btn-sm btn-light me-1"><i class="bi bi-arrow-repeat me-1"></i>Тест</a>
 							</td>
 						</tr>
-
-						<!-- Table item -->
-						<tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
 							<!-- Table data -->
 							<td>
 								<div class="d-flex align-items-center">
-									<!-- Image -->
-									<div class="w-100px">
-										<img src="./student_dashboard_files/05.jpg" class="rounded" alt="">
-									</div>
 									<div class="mb-0 ms-2">
-										<!-- Title -->
-										<h6><a href="https://eduport.webestica.com/student-dashboard.html#">The Complete Web Development in python</a></h6>
-										<!-- Info -->
-										<div class="overflow-hidden">
-											<h6 class="mb-0 text-end">60%</h6>
-											<div class="progress progress-sm bg-primary bg-opacity-10">
-												<div class="progress-bar bg-primary aos aos-init" role="progressbar" data-aos="slide-right" data-aos-delay="200" data-aos-duration="1000" data-aos-easing="ease-in-out" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
-												</div>
-											</div>
-										</div>
+										<h6>Упс! У вас еще нет активных курсов. <a href="{% url 'catalog' %}" style="color: blue;">Выбери интересующий тебя</a></h6>
 									</div>
 								</div>
 							</td>
-
-							<!-- Table data -->
-							<td>28</td>
-
-							<!-- Table data -->
-							<td>12</td>
-
-							<!-- Table data -->
-							<td>
-								<a href="https://eduport.webestica.com/student-dashboard.html#" class="btn btn-sm btn-primary-soft me-1 mb-1 mb-md-0"><i class="bi bi-play-circle me-1"></i>Continue</a>
-							</td>
 						</tr>
-
-						<!-- Table item -->
-						<tr>
-							<!-- Table data -->
-							<td>
-								<div class="d-flex align-items-center">
-									<!-- Image -->
-									<div class="w-100px">
-										<img src="./student_dashboard_files/01(1).jpg" class="rounded" alt="">
-									</div>
-									<div class="mb-0 ms-2">
-										<!-- Title -->
-										<h6><a href="https://eduport.webestica.com/student-dashboard.html#">Digital Marketing Masterclass</a></h6>
-										<!-- Info -->
-										<div class="overflow-hidden">
-											<h6 class="mb-0 text-end">40%</h6>
-											<div class="progress progress-sm bg-primary bg-opacity-10">
-												<div class="progress-bar bg-primary aos aos-init" role="progressbar" data-aos="slide-right" data-aos-delay="200" data-aos-duration="1000" data-aos-easing="ease-in-out" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</td>
-							<!-- Table data -->
-							<td>32</td>
-
-							<!-- Table data -->
-							<td>18</td>
-
-							<!-- Table data -->
-							<td>
-								<a href="https://eduport.webestica.com/student-dashboard.html#" class="btn btn-sm btn-primary-soft me-1 mb-1 mb-md-0"><i class="bi bi-play-circle me-1"></i>Continue</a>
-							</td>
-						</tr>
-
-						<!-- Table item -->
-						<tr>
-							<!-- Table data -->
-							<td>
-								<div class="d-flex align-items-center">
-									<!-- Image -->
-									<div class="w-100px">
-										<img src="./student_dashboard_files/02.jpg" class="rounded" alt="">
-									</div>
-									<div class="mb-0 ms-2">
-										<!-- Title -->
-										<h6><a href="https://eduport.webestica.com/student-dashboard.html#">Graphic Design Masterclass</a></h6>
-										<!-- Info -->
-										<div class="overflow-hidden">
-											<h6 class="mb-0 text-end">90%</h6>
-											<div class="progress progress-sm bg-primary bg-opacity-10">
-												<div class="progress-bar bg-primary aos aos-init" role="progressbar" data-aos="slide-right" data-aos-delay="200" data-aos-duration="1000" data-aos-easing="ease-in-out" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</td>
-							<!-- Table data -->
-							<td>16</td>
-
-							<!-- Table data -->
-							<td>14</td>
-
-							<!-- Table data -->
-							<td>
-								<a href="https://eduport.webestica.com/student-dashboard.html#" class="btn btn-sm btn-primary-soft me-1 mb-1 mb-md-0"><i class="bi bi-play-circle me-1"></i>Continue</a>
-							</td>
-						</tr>
+                    {% endif %}
 					</tbody>
 					<!-- Table body END -->
 				</table>
@@ -216,20 +92,26 @@
 			<!-- Course list table END -->
 
 			<!-- Pagination START -->
+        {% if is_paginated %}
 			<div class="d-sm-flex justify-content-sm-between align-items-sm-center mt-4 mt-sm-3">
-				<!-- Content -->
-				<p class="mb-0 text-center text-sm-start">Showing 1 to 8 of 20 entries</p>
 				<!-- Pagination -->
 				<nav class="d-flex justify-content-center mb-0" aria-label="navigation">
 					<ul class="pagination pagination-sm pagination-primary-soft d-inline-block d-md-flex rounded mb-0">
-						<li class="page-item mb-0"><a class="page-link" href="https://eduport.webestica.com/student-dashboard.html#" tabindex="-1"><i class="fas fa-angle-left"></i></a></li>
-						<li class="page-item mb-0"><a class="page-link" href="https://eduport.webestica.com/student-dashboard.html#">1</a></li>
-						<li class="page-item mb-0 active"><a class="page-link" href="https://eduport.webestica.com/student-dashboard.html#">2</a></li>
-						<li class="page-item mb-0"><a class="page-link" href="https://eduport.webestica.com/student-dashboard.html#">3</a></li>
-						<li class="page-item mb-0"><a class="page-link" href="https://eduport.webestica.com/student-dashboard.html#"><i class="fas fa-angle-right"></i></a></li>
+                        {% if page_obj.has_previous %}
+						<li class="page-item mb-0"><a class="page-link" href="?page=1" tabindex="-1"><i class="bi bi-caret-left-fill" style="color: #2156b0;"></i></a></li>
+					{% endif %}
+					{% for page in paginator.page_range %}
+						<li class="page-item mb-0{% if page == page_obj.number %} active{% endif %}">
+							<a class="page-link" href="?page={{ page }}">{{ page }}</a>
+						</li>
+					{% endfor %}
+					{% if page_obj.has_next %}
+						<li class="page-item mb-0"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}"><i class="fbi bi-caret-right-fill" style="color: #2156b0;"></i></a></li>
+					{% endif %}
 					</ul>
 				</nav>
 			</div>
+        {% endif %}
 			<!-- Pagination END -->
 		</div>
 		<!-- Card body START -->

@@ -7,7 +7,7 @@ from .models import Category, Course
 
 
 class CourseListView(TitleMixin, ListView):
-    """отображение всех курсов"""
+    """Отображение всех курсов"""
     model = Course
     template_name = 'courses/catalog.html'
     paginate_by = 6
