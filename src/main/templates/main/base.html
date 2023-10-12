@@ -71,7 +71,7 @@
 	</script>
 
 	<!-- Favicon -->
-	<link rel="shortcut icon" href="https://eduport.webestica.com/assets/images/favicon.ico">
+	<link rel="shortcut icon" href="{% static 'main/img/festu_favicon.png' %}">
 
 	<!-- Google Font -->
 	<link rel="preconnect" href="https://fonts.googleapis.com/">
@@ -111,8 +111,8 @@
 		<div class="container-fluid px-3 px-xl-5">
 			<!-- Logo START -->
 			<a class="navbar-brand" href="{% url 'index' %}">
-				<img class="light-mode-item navbar-brand-item" src="https://plagiatfree.ru/upload/iblock/515/51541a645088bc8faea32b7f8bc7d00f/dvgups.jpg" alt="logo">
-				<img class="dark-mode-item navbar-brand-item" src="https://plagiatfree.ru/upload/iblock/515/51541a645088bc8faea32b7f8bc7d00f/dvgups.jpg" alt="logo">
+				<img class="light-mode-item navbar-brand-item" src="{% static 'main/img/festu_favicon.png' %}" alt="logo">
+				<img class="dark-mode-item navbar-brand-item" src="{% static 'main/img/festu_favicon.png' %}" alt="logo">
 			</a>
 			<!-- Logo END -->
 
@@ -136,189 +136,29 @@
 					</div>
 
 					<!-- Nav item 2 Pages -->
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="https://eduport.webestica.com/index.html#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Новости</a>
-						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
-							<!-- Dropdown submenu -->
-							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item dropdown-toggle" href="https://eduport.webestica.com/index.html#">Course</a>
-								<ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/course-categories.html">Course Categories</a></li>
-									<li> <hr class="dropdown-divider"></li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/course-grid.html">Course Grid Classic</a></li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/course-grid-2.html">Course Grid Minimal</a></li>
-									<li> <hr class="dropdown-divider"></li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/course-list.html">Course List Classic</a></li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/course-list-2.html">Course List Minimal</a></li>
-									<li> <hr class="dropdown-divider"></li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/course-detail.html">Course Detail Classic</a></li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/course-detail-min.html">Course Detail Minimal</a></li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/course-detail-adv.html">Course Detail Advance</a></li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/course-detail-module.html">Course Detail Module</a></li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/course-video-player.html">Course Full Screen Video</a></li>
-								</ul>
-							</li>
-
-							<!-- Dropdown submenu -->
-							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item dropdown-toggle" href="https://eduport.webestica.com/index.html#">About</a>
-								<ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/about.html">About Us</a></li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/contact-us.html">Contact Us</a></li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/blog-grid.html">Blog Grid</a></li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/blog-masonry.html">Blog Masonry</a></li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/blog-detail.html">Blog Detail</a></li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/pricing.html">Pricing</a></li>
-								</ul>
-							</li>
-
-							<!-- Dropdown submenu -->
-							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item dropdown-toggle" href="https://eduport.webestica.com/index.html#">Hero Banner</a>
-								<ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/docs/snippet-hero-12.html">Hero Form</a></li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/docs/snippet-hero-13.html">Hero Vector</a></li>
-									<li> <p class="dropdown-item mb-0">Coming soon....</p></li>
-								</ul>
-							</li>
-
-							<li> <a class="dropdown-item" href="https://eduport.webestica.com/instructor-list.html">Instructor List</a></li>
-							<li> <a class="dropdown-item" href="https://eduport.webestica.com/instructor-single.html">Instructor Single</a></li>
-							<li> <a class="dropdown-item" href="https://eduport.webestica.com/become-instructor.html">Become an Instructor</a></li>
-							<li> <a class="dropdown-item" href="https://eduport.webestica.com/abroad-single.html">Abroad Single</a></li>
-							<li> <a class="dropdown-item" href="https://eduport.webestica.com/workshop-detail.html">Workshop Detail</a></li>
-							<li> <a class="dropdown-item" href="https://eduport.webestica.com/event-detail.html">Event Detail <span class="badge bg-success ms-2 smaller">New</span></a></li>
-
-							<!-- Dropdown submenu -->
-							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item dropdown-toggle" href="https://eduport.webestica.com/index.html#">Shop</a>
-								<ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/shop.html">Shop grid</a></li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/shop-product-detail.html">Product detail</a></li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/cart.html">Cart</a></li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/checkout.html">Checkout</a></li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/empty-cart.html">Empty Cart</a></li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/wishlist.html">Wishlist</a></li>
-								</ul>
-							</li>
-
-							<!-- Dropdown submenu -->
-							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item dropdown-toggle" href="https://eduport.webestica.com/index.html#">Help</a>
-								<ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/help-center.html">Help Center</a></li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/help-center-detail.html">Help Center Single</a></li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/faq.html">FAQs</a></li>
-								</ul>
-							</li>
-
-							<!-- Dropdown submenu -->
-							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item dropdown-toggle" href="https://eduport.webestica.com/index.html#">Authentication</a>
-								<ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/sign-in.html">Sign In</a></li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/sign-up.html">Sign Up</a></li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/forgot-password.html">Forgot Password</a></li>
-								</ul>
-							</li>
-
-							<!-- Dropdown submenu -->
-							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item dropdown-toggle" href="https://eduport.webestica.com/index.html#">Form</a>
-								<ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/request-demo.html">Request a demo</a></li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/book-class.html">Book a Class</a></li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/request-access.html">Free Access</a></li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/university-admission-form.html">Admission Form</a></li>
-								</ul>
-							</li>
-
-							<!-- Dropdown submenu -->
-							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item dropdown-toggle" href="https://eduport.webestica.com/index.html#">Specialty</a>
-								<ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/error-404.html">Error 404</a></li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/coming-soon.html">Coming Soon</a></li>
-								</ul>
-							</li>
-
-						</ul>
-					</li>
+					<div class="nav-item ">
+						<a class="nav-link" href="{% url 'soon' %}" >Новости</a>
+					</div>
 
 					<!-- Nav item 3 Account -->
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="https://eduport.webestica.com/index.html#" id="accounntMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Accounts</a>
+					<div class="nav-item ">
+						<a class="nav-link " href="{% url 'contacts' %}">Контакты</a>
+					</div>
+
+                    <!-- Nav item 4-->
+                    <li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="" id="accounntMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">О нас</a>
 						<ul class="dropdown-menu" aria-labelledby="accounntMenu">
-							<!-- Dropdown submenu -->
-							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item dropdown-toggle" href="https://eduport.webestica.com/index.html#"><i class="fas fa-user-tie fa-fw me-1"></i>Instructor</a>
-								<ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/instructor-dashboard.html"><i class="bi bi-grid-fill fa-fw me-1"></i>Dashboard</a> </li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/instructor-manage-course.html"><i class="bi bi-basket-fill fa-fw me-1"></i>Courses</a> </li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/instructor-create-course.html"><i class="bi bi-file-earmark-plus-fill fa-fw me-1"></i>Create Course</a> </li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/course-added.html"><i class="bi bi-file-check-fill fa-fw me-1"></i>Course Added</a> </li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/instructor-quiz.html"><i class="bi bi-question-diamond fa-fw me-1"></i>Quiz</a> </li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/instructor-earning.html"><i class="fas fa-chart-line fa-fw me-1"></i>Earnings</a> </li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/instructor-studentlist.html"><i class="fas fa-user-graduate fa-fw me-1"></i>Students</a> </li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/instructor-order.html"><i class="bi bi-cart-check-fill fa-fw me-1"></i>Orders</a> </li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/instructor-review.html"><i class="bi bi-star-fill fa-fw me-1"></i>Reviews</a> </li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/instructor-payout.html"><i class="fas fa-wallet fa-fw me-1"></i>Payout</a> </li>
-								</ul>
-							</li>
-
-							<!-- Dropdown submenu -->
-								<li class="dropdown-submenu dropend">
-								<a class="dropdown-item dropdown-toggle" href="https://eduport.webestica.com/index.html#"><i class="fas fa-user-graduate fa-fw me-1"></i>Student</a>
-								<ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/student-dashboard.html"><i class="bi bi-grid-fill fa-fw me-1"></i>Dashboard</a> </li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/student-subscription.html"><i class="bi bi-card-checklist fa-fw me-1"></i>My Subscriptions</a> </li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/student-course-list.html"><i class="bi bi-basket-fill fa-fw me-1"></i>Courses</a> </li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/student-course-resume.html"><i class="far fa-fw fa-file-alt me-1"></i>Course Resume</a> </li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/student-quiz.html"><i class="bi bi-question-diamond fa-fw me-1"></i>Quiz </a> </li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/student-payment-info.html"><i class="bi bi-credit-card-2-front-fill fa-fw me-1"></i>Payment Info</a> </li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/student-bookmark.html"><i class="fas bi-cart-check-fill fa-fw me-1"></i>Wishlist</a> </li>
-								</ul>
-							</li>
-
-							<li> <a class="dropdown-item" href="https://eduport.webestica.com/admin-dashboard.html"><i class="fas fa-user-cog fa-fw me-1"></i>Admin</a> </li>
-							<li> <hr class="dropdown-divider"></li>
-							<li> <a class="dropdown-item" href="https://eduport.webestica.com/instructor-edit-profile.html"><i class="fas fa-fw fa-edit me-1"></i>Edit Profile</a> </li>
-							<li> <a class="dropdown-item" href="https://eduport.webestica.com/instructor-setting.html"><i class="fas fa-fw fa-cog me-1"></i>Settings</a> </li>
-							<li> <a class="dropdown-item" href="https://eduport.webestica.com/instructor-delete-account.html"><i class="fas fa-fw fa-trash-alt me-1"></i>Delete Profile</a> </li>
-
-							<li> <hr class="dropdown-divider"></li>
-							<!-- Dropdown Level -->
-							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item dropdown-toggle" href="https://eduport.webestica.com/index.html#">Dropdown levels</a>
-								<ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
-
-									<!-- dropdown submenu open right -->
-									<li class="dropdown-submenu dropend">
-										<a class="dropdown-item dropdown-toggle" href="https://eduport.webestica.com/index.html#">Dropdown (end)</a>
-										<ul class="dropdown-menu" data-bs-popper="none">
-											<li> <a class="dropdown-item" href="https://eduport.webestica.com/index.html#">Dropdown item</a> </li>
-											<li> <a class="dropdown-item" href="https://eduport.webestica.com/index.html#">Dropdown item</a> </li>
-										</ul>
-									</li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/index.html#">Dropdown item</a> </li>
-
-									<!-- dropdown submenu open left -->
-									<li class="dropdown-submenu dropstart">
-										<a class="dropdown-item dropdown-toggle" href="https://eduport.webestica.com/index.html#">Dropdown (start)</a>
-										<ul class="dropdown-menu dropdown-menu-end" data-bs-popper="none">
-											<li> <a class="dropdown-item" href="https://eduport.webestica.com/index.html#">Dropdown item</a> </li>
-											<li> <a class="dropdown-item" href="https://eduport.webestica.com/index.html#">Dropdown item</a> </li>
-										</ul>
-									</li>
-									<li> <a class="dropdown-item" href="https://eduport.webestica.com/index.html#">Dropdown item</a> </li>
-								</ul>
-							</li>
+							<li> <a class="dropdown-item" href=""><i class="fas fa-user-cog fa-fw me-1"></i>Admin</a> </li>
+							<li> <a class="dropdown-item" href=""><i class="fas fa-fw fa-edit me-1"></i>Edit Profile</a> </li>
+							<li> <a class="dropdown-item" href=""><i class="fas fa-fw fa-cog me-1"></i>Settings</a> </li>
+							<li> <a class="dropdown-item" href=""><i class="fas fa-fw fa-trash-alt me-1"></i>Delete Profile</a> </li>
 						</ul>
 					</li>
 
 					<!-- Nav item 4 Megamenu-->
 					<li class="nav-item dropdown dropdown-fullwidth">
-						<a class="nav-link dropdown-toggle" href="https://eduport.webestica.com/index.html#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Megamenu</a>
+						<a class="nav-link dropdown-toggle" href="https://eduport.webestica.com/index.html#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Навигация</a>
 						<div class="dropdown-menu dropdown-menu-end" data-bs-popper="none">
 							<div class="row p-4 g-4">
 								<!-- Dropdown column item -->
@@ -398,26 +238,6 @@
 										</div>
 									</div>
 								</div>
-
-								<!-- Dropdown column item -->
-								<div class="col-xl-6 col-xxl-3">
-									<h6 class="mb-0">Download Eduport</h6>
-									<hr>
-									<!-- Image -->
-									<img src="./index_files/14.svg" alt="">
-
-									<!-- Download button -->
-									<div class="row g-2 justify-content-center mt-3">
-										<!-- Google play store button -->
-										<div class="col-6 col-sm-4 col-xxl-6">
-											<a href="https://eduport.webestica.com/index.html#"> <img src="./index_files/google-play.svg" class="btn-transition" alt="google-store"> </a>
-										</div>
-										<!-- App store button -->
-										<div class="col-6 col-sm-4 col-xxl-6">
-											<a href="https://eduport.webestica.com/index.html#"> <img src="./index_files/app-store.svg" class="btn-transition" alt="app-store"> </a>
-										</div>
-									</div>
-								</div>
 							</div>
 						</div>
 					</li>
@@ -464,19 +284,6 @@
 					</li>
 				</ul>
 				<!-- Nav Main menu END -->
-
-				<!-- Nav Search START -->
-				<div class="nav my-3 my-xl-0 px-4 flex-nowrap align-items-center">
-					<div class="nav-item w-100">
-						<form class="position-relative">
-							<input class="form-control pe-5 bg-transparent" type="search" placeholder="Поиск по сайту" aria-label="Search">
-							<button class="bg-transparent p-2 position-absolute top-50 end-0 translate-middle-y border-0 text-primary-hover text-reset" type="submit">
-								<i class="fas fa-search fs-6 "></i>
-							</button>
-						</form>
-					</div>
-				</div>
-				<!-- Nav Search END -->
 			</div>
 			<!-- Main navbar END -->
 
@@ -564,64 +371,7 @@
 Footer START -->
 <footer class="pt-5">
 	<div class="container">
-		<!-- Row START -->
-		<div class="row g-4">
 
-			<!-- Widget 1 START -->
-			<div class="col-lg-3">
-				<!-- logo -->
-				<a class="me-0" href="">
-					<img class="light-mode-item h-40px" src="https://plagiatfree.ru/upload/iblock/515/51541a645088bc8faea32b7f8bc7d00f/dvgups.jpg" alt="logo">
-					<img class="dark-mode-item h-40px" src="https://plagiatfree.ru/upload/iblock/515/51541a645088bc8faea32b7f8bc7d00f/dvgups.jpg" alt="logo">
-				</a>
-				<!-- Social media icon -->
-				<ul class="list-inline mb-0 mt-3">
-					<li class="list-inline-item"> <a class="btn btn-white btn-sm shadow px-2 text-facebook" href="https://eduport.webestica.com/index.html#"><i class="fab fa-fw fa-facebook-f"></i></a> </li>
-					<li class="list-inline-item"> <a class="btn btn-white btn-sm shadow px-2 text-instagram" href="https://eduport.webestica.com/index.html#"><i class="fab fa-fw fa-instagram"></i></a> </li>
-					<li class="list-inline-item"> <a class="btn btn-white btn-sm shadow px-2 text-twitter" href="https://eduport.webestica.com/index.html#"><i class="fab fa-fw fa-twitter"></i></a> </li>
-					<li class="list-inline-item"> <a class="btn btn-white btn-sm shadow px-2 text-linkedin" href="https://eduport.webestica.com/index.html#"><i class="fab fa-fw fa-linkedin-in"></i></a> </li>
-				</ul>
-			</div>
-			<!-- Widget 1 END -->
-
-			<!-- Widget 2 START -->
-			<div class="col-lg-6">
-				<div class="row g-4">
-					<!-- Link block -->
-					<div class="col-6 col-md-4">
-						<h5 class="mb-2 mb-md-4">Комьюнити</h5>
-						<ul class="nav flex-column">
-							<li class="nav-item"><a class="nav-link" href="https://eduport.webestica.com/index.html#">О нас</a></li>
-							<li class="nav-item"><a class="nav-link" href="https://eduport.webestica.com/index.html#">Контакты</a></li>
-						</ul>
-					</div>
-
-					<!-- Link block -->
-					<div class="col-6 col-md-4">
-						<h5 class="mb-2 mb-md-4">Обучение</h5>
-						<ul class="nav flex-column">
-							<li class="nav-item"><a class="nav-link" href="https://eduport.webestica.com/index.html#">Общая информация</a></li>
-							<li class="nav-item"><a class="nav-link" href="https://eduport.webestica.com/index.html#">How to guide</a></li>
-							<li class="nav-item"><a class="nav-link" href="https://eduport.webestica.com/index.html#">Terms &amp; Conditions</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<!-- Widget 2 END -->
-
-			<!-- Widget 3 START -->
-			<div class="col-lg-3">
-				<h5 class="mb-2 mb-md-4">Contact</h5>
-				<!-- Time -->
-				<p class="mb-2">
-					Телефон:<span class="h6 fw-light ms-2">+1234 568 963</span>
-					<span class="d-block small">(10:00 - 18:00 МСК+7)</span>
-				</p>
-
-				<p class="mb-0">Email:<span class="h6 fw-light ms-2">example@gmail.com</span></p>
-			</div>
-			<!-- Widget 3 END -->
-		</div><!-- Row END -->
 
 		<!-- Divider -->
 		<hr class="mt-4 mb-0">
@@ -631,7 +381,7 @@ Footer START -->
 			<div class="container px-0">
 				<div class="d-lg-flex justify-content-between align-items-center py-3 text-center text-md-left">
 					<!-- copyright text -->
-					<div class="text-primary-hover"> Разработка <a href="" target="_blank" class="text-body">©2023 Карпухин Михаил</a>. Все права защищены. </div>
+					<div class="text-primary-hover"> Разработка <a href="https://vk.com/mikhailkarpukhin" target="_blank" class="text-body">©2023 Карпухин Михаил</a>. Все права защищены. </div>
 					<!-- copyright links-->
 					<div class="justify-content-center mt-3 mt-lg-0">
 						<ul class="nav list-inline justify-content-center mb-0">

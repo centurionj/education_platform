@@ -1,3 +1,5 @@
+from django.shortcuts import render
+from django.views.generic import TemplateView
 from django.views.generic.list import ListView
 
 from common.views import TitleMixin
@@ -23,3 +25,11 @@ class IndexView(TitleMixin, ListView):
         context['categories'] = categories
         context['teachers'] = teachers
         return context
+
+
+class ContactsView(TemplateView):
+    template_name = 'main/contacts.html'
+
+
+def coming_soon(request):
+    return render(request, 'main/coming_soon.html')
