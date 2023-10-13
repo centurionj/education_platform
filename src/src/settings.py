@@ -13,7 +13,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -25,9 +24,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'main',
+    'news',
+    'setups',
     'courses',
     'users',
     'favourites',
+    'lectures',
     'testing',
 ]
 
@@ -54,13 +56,13 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # 'main.context_processors.items_count',
             ],
         },
     },
 ]
 
 WSGI_APPLICATION = 'src.wsgi.application'
-
 
 # Database
 
@@ -74,7 +76,6 @@ DATABASES = {
         'PORT': os.getenv('DB_PORT'),
     }
 }
-
 
 # Password validation
 
@@ -93,7 +94,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 
 LANGUAGE_CODE = 'ru'
@@ -103,7 +103,6 @@ TIME_ZONE = 'Asia/Vladivostok'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 
