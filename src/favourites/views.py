@@ -19,5 +19,6 @@ class FavouriteListView(ListView):
 
 @login_required
 def add_or_delete(request, course_id):
+    """Добавление/удаление курса из понравившихся"""
     CourseLike.objects.delete_or_create(user=request.user, course_id=course_id)
     return HttpResponseRedirect(request.META['HTTP_REFERER'])

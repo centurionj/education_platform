@@ -28,8 +28,10 @@ class IndexView(TitleMixin, ListView):
 
 
 class ContactsView(TemplateView):
+    """Страница с контактами"""
     template_name = 'main/contacts.html'
 
 
 def coming_soon(request):
+    """Страница заглушка"""
     return render(request, 'main/coming_soon.html')

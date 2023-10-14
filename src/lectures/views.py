@@ -8,6 +8,7 @@ from . models import Lecture
 
 
 class LectureListView(ListView):
+    """Отображение лекций на странице"""
     model = Lecture
     template_name = 'lectures/lectures.html'
     context_object_name = 'lectures'
@@ -16,14 +17,3 @@ class LectureListView(ListView):
         queryset = super(LectureListView, self).get_queryset()
         course_slug = self.kwargs.get('course_slug')
         return queryset.filter(course__slug=course_slug) if course_slug else queryset
-
-
-class LectureDetailView(DetailView):
-    model = Lecture
-    template_name = 'lectures/lecture_detail.html'
-    context_object_name = 'lecture'
-
-    def get_object(self, queryset=None):
-        course_slug = self.kwargs.get('course_slug')
-        lecture_slug = self.kwargs.get('lecture_slug')
-        return Lecture.objects.get(course__slug=course_slug, slug=lecture_slug)
