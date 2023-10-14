@@ -1,0 +1,72 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}
+{{ news.title }}
+{% endblock %}
+
+{% block body %}
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+<!-- =======================
+Page banner video START -->
+<section class="py-0 pb-lg-5">
+	<div class="container">
+		<div class="row g-3">
+			<!-- Course video START -->
+			<div class="col-12">
+				<div class="video-player rounded-3">
+                     <img src="{{news.file.url}}" class="card-img-top" alt="book image">
+                </div>
+            </div>
+        </div>
+	</div>
+</section>
+<!-- =======================
+Page banner video END -->
+
+<!-- =======================
+Page content START -->
+<section class="pt-0">
+	<div class="container">
+		<div class="row g-lg-5">
+
+			<!-- Main content START -->
+			<div class="col-lg-8">
+				<div class="row g-4">
+							
+					<!-- Course title START -->
+					<div class="col-12">
+						<!-- Title -->
+						<h1>{{ news.title}}</h1>
+
+					</div>
+					<div class="col-12">
+						<!-- Tabs START -->
+
+						<!-- Tabs END -->
+
+						<!-- Tab contents START -->
+						<div class="tab-content pt-4 px-3" id="course-pills-tabContent">
+							<!-- Content START -->
+							<div class="tab-pane fade show active" id="course-pills-1" role="tabpanel" aria-labelledby="course-pills-tab-1">
+								<!-- Course detail START -->
+								<h5 class="mb-3">Содержание</h5>
+								<p class="mb-3">{{ news.content }}</p>
+							</div>
+                        </div>
+						<!-- Tab contents END -->
+					</div>
+					<!-- Course detail END -->
+				</div>
+			</div>
+			<!-- Main content END -->
+
+		</div><!-- Row END -->
+	</div>
+</section>
+<!-- =======================
+Page content END -->
+
+</main>
+<!-- **************** MAIN CONTENT END **************** -->
+{% endblock %}
