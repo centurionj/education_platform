@@ -67,9 +67,9 @@
 
 							<!-- Table data -->
 							<td>
-								<a href="" class="btn btn-sm btn-primary-soft me-1 mb-1 mb-md-0"><i class="bi bi-play-circle me-1"></i>Continue</a>
+								<a href="{% url 'course_lectures' course_slug=course.slug %}" class="btn btn-sm btn-primary-soft me-1 mb-1 mb-md-0"><i class="bi bi-play-circle me-1"></i>Лекции</a>
                                 <button class="btn btn-sm btn-success me-1 mb-1 mb-x;-0 disabled"><i class="bi bi-check me-1"></i>Завершен</button>
-								<a href="https://eduport.webestica.com/student-dashboard.html#" class="btn btn-sm btn-light me-1"><i class="bi bi-arrow-repeat me-1"></i>Тест</a>
+								<a href="" class="btn btn-sm btn-light me-1"><i class="bi bi-arrow-repeat me-1"></i>Тест</a>
 							</td>
 						</tr>
                         {% endfor %}

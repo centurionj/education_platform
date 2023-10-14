@@ -1,0 +1,75 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}
+    Главная
+{% endblock %}
+
+{% block body %}
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&amp;family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet">
+
+<!-- Theme CSS -->
+<link rel="stylesheet" type="text/css" href="{% static 'lectures/styles/doc.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'lectures/styles/prism.css' %}">
+
+
+
+<main>
+<div class="container-fluid px-0">
+	<div class="page-wrapper">
+		<!-- Left sidebar START -->
+		<nav class="navbar navbar-expand-sm navbar-light bg-light px-3">
+    <a class="navbar-brand py-2 d-sm-none" href="#">Навигация</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#docNav" aria-controls="docNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="docNav">
+        <div class="left-sidebar bg-light ss-container">
+            <div class="ss-wrapper">
+                <div class="ss-content">
+                    <div class="content custom-scrollbar h-100"><br>
+                        <div class="list-group list-group-borderless p-3 p-md-4">
+                            <b class="text-dark text-uppercase mb-2">Оглавление</b>
+                            {% if lectures %}
+                            {% for lecture in lectures %}
+                            <a class="list-group-item" href="#{{ lecture.id }}">{{ lecture.title }}</a>
+                            {% endfor %}
+                            {% else %}
+                            <span class="list-group-item" href="">Лекции появятся чуточку позже</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ss-scroll ss-hidden"></div>
+        </div>
+    </div>
+</nav>
+<!-- Left sidebar END -->
+
+<!-- Main content START -->
+<div class="main-content">
+    <div class="row">
+        <div class="col-12">
+            {% for lecture in lectures %}
+            <!-- Page title -->
+            <div class="my-5">
+                <h1 id="{{ lecture.id }}">{{ lecture.title }}</h1>
+                <hr class="my-5">
+            </div>
+            <!-- Page content -->
+            <iframe src="{{ lecture.file.url }}#toolbar=0" style="width: 100%; height: 100vh;" frameborder="0" allowfullscreen></iframe>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+		<!-- Main content END -->
+	</div>
+</div>
+</main>
+<!-- Bootstrap JS -->
+    <script src="{% static 'lectures/scripts/simple-scrollbar.min.js' %}"></script>
+    <script src="{% static 'lectures/scripts/prism.js' %}"></script>
+    <script src="{% static 'lectures/scripts/clipboard.min.js' %}"></script>
+
+{% endblock %}

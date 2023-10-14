@@ -128,3 +128,7 @@ SESSION_COOKIE_SECURE = False  # для использования HTTPS (True)
 SESSION_COOKIE_HTTPONLY = True  # закрыл доступ к cookie через JS
 SESSION_SAVE_EVERY_REQUEST = True  # для сохранения сессии при перемещении на сайте
 SESSION_COOKIE_SAMESITE = 'Lax'
+
+
+# PDF
+X_FRAME_OPTIONS = 'SAMEORIGIN'
