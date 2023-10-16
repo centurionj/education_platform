@@ -14,6 +14,11 @@ class User(AbstractUser):
     grade = models.CharField('Ученая степень', max_length=50, null=True, blank=True)
     role = models.CharField('Роль', max_length=50, choices=RoleStatuses.choices, default=RoleStatuses.STUDENT)
 
+    class Meta:
+        verbose_name_plural = 'Пользователи'
+        verbose_name = 'Пользователь'
+        ordering = ['last_name', 'first_name']
+
     def __str__(self):
         return self.get_full_name()
 
@@ -54,6 +59,11 @@ class Group(models.Model):
     """модель группы"""
     title = models.CharField('Название группы', max_length=255)
     student = models.ManyToManyField(Student, related_name='group_students')
+
+    class Meta:
+        verbose_name_plural = 'Группы'
+        verbose_name = 'Группа'
+        ordering = ['title']
 
     def __str__(self):
         return self.title

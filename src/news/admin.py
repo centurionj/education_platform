@@ -5,4 +5,4 @@ from .models import News
 
 @admin.register(News)
 class NewsAdmin(admin.ModelAdmin):
-    list_display = ('title', 'content', 'datetime',)
+    list_display = ('title', 'datetime',)

@@ -23,6 +23,11 @@ class Course(models.Model):
             image.thumbnail((600, 450))
             image.save(self.image.path)
 
+    class Meta:
+        verbose_name_plural = 'Курсы'
+        verbose_name = 'Курс'
+        ordering = ['title']
+
     def __str__(self):
         return self.title
 
@@ -31,6 +36,11 @@ class Category(models.Model):
     """"модель для категорий курсов"""
     title = models.CharField(max_length=255, unique=True)
     slug = AutoSlugField(populate_from='title', unique=True, editable=False)
+
+    class Meta:
+        verbose_name_plural = 'Категории'
+        verbose_name = 'Категория'
+        ordering = ['title']
 
     def __str__(self):
         return self.title

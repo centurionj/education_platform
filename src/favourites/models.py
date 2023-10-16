@@ -22,6 +22,9 @@ class CourseLike(models.Model):
 
     class Meta:
         unique_together = ['user', 'course']
+        verbose_name_plural = 'Понравившееся'
+        verbose_name = 'Понравившееся'
+        ordering = ['user', 'course']
 
     def __str__(self):
         return self.course.title
