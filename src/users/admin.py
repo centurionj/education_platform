@@ -5,7 +5,7 @@ from users.models import Group, User
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('last_name', 'first_name', 'username',  'role', 'grade')
+    list_display = ('id', 'last_name', 'first_name', 'username',  'role', 'grade')
 
 
 @admin.register(Group)

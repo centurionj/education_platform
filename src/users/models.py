@@ -28,6 +28,9 @@ class User(AbstractUser):
     def is_student(self):
         return self.role == RoleStatuses.STUDENT
 
+    def is_admin(self):
+        return self.role == RoleStatuses.ADMIN
+
 
 class TeacherManager(models.Manager):
     """менеджер объектов преподов"""
