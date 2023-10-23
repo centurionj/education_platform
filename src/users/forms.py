@@ -34,6 +34,7 @@ class UserRegistrationForm(UserCreationForm):
 
 
 class UserLogingForm(AuthenticationForm):
+    """Форма для входа в акк"""
     username = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control border-0 bg-light rounded-end ps-1', 'placeholder': 'Имя пользователя'
     }))

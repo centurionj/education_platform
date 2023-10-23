@@ -1,8 +1,8 @@
 from django.contrib.auth.views import LoginView, PasswordResetView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models import Q
-from django.shortcuts import HttpResponseRedirect
-from django.urls import reverse_lazy
+from django.shortcuts import HttpResponseRedirect, redirect
+from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView
 
@@ -14,7 +14,14 @@ from users.forms import (
     UserLogingForm,
     UserRegistrationForm,
 )
-from users.models import Group, User
+from users.models import User
+
+
+def login_redirect(request):
+    if request.user.is_authenticated:
+        if request.user.is_student():
+            return redirect(reverse('dashboard'))
+        return redirect(reverse('admin:index'))
 
 
 class UserRegistrationView(TitleMixin, SuccessMessageMixin, CreateView):
@@ -78,7 +85,7 @@ class UserChangePasswordView(UserUpdateView, PasswordResetView):
     def get_form(self, form_class=None):
         if form_class is None:
             form_class = self.get_form_class()
-        return form_class(user=self.request.user, **self.get_form_kwargs())
+        return form_class(user=self.request.user)
 
 
 def delete_image(request):
