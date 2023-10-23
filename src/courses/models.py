@@ -7,7 +7,7 @@ from users.models import Teacher
 
 class Course(models.Model):
     """модель для курсов"""
-    title = models.CharField(max_length=255)
+    title = models.CharField('Название', max_length=255)
     image = models.ImageField('Фотография', upload_to='courses_images/')
     description = models.TextField('Описание')
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
@@ -34,7 +34,7 @@ class Course(models.Model):
 
 class Category(models.Model):
     """"модель для категорий курсов"""
-    title = models.CharField(max_length=255, unique=True)
+    title = models.CharField('Название', max_length=255, unique=True)
     slug = AutoSlugField(populate_from='title', unique=True, editable=False)
 
     class Meta:
