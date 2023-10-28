@@ -1,6 +1,6 @@
 from django.contrib.auth.views import LoginView, PasswordResetView
+from django.contrib.auth import login
 from django.contrib.messages.views import SuccessMessageMixin
-from django.db.models import Q
 from django.shortcuts import HttpResponseRedirect, redirect
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView
@@ -30,9 +30,14 @@ class UserRegistrationView(TitleMixin, SuccessMessageMixin, CreateView):
     model = User
     form_class = UserRegistrationForm
     template_name = 'users/registration.html'
-    success_url = reverse_lazy('dashboard')
+    success_url = reverse_lazy('index')
     success_message = 'Вы успешно зарегестрированы!'
     title = 'Регистрация'
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        login(self.request, self.object)
+        return response
 
 
 class UserLoginView(TitleMixin, LoginView):
@@ -53,8 +58,10 @@ class DashboardListView(TitleMixin, ListView):
 
     def get_queryset(self):
         user = self.request.user
-        course_filter = Q(groups__user_groups=user)
-        return Course.objects.filter(course_filter)
+        student_group = user.student_groups.first()
+        if student_group:
+            return student_group.courses.all()
+        return Course.objects.none()
 
 
 class UserUpdateView(TitleMixin, UpdateView):

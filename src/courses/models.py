@@ -11,7 +11,7 @@ class Course(models.Model):
     image = models.ImageField('Фотография', upload_to='courses_images/')
     description = models.TextField('Описание')
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
-    groups = models.ManyToManyField('users.Groups', related_name='courses')
+    student_groups = models.ManyToManyField('users.StudentGroups', related_name='courses')
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
     slug = AutoSlugField(populate_from='title', unique=True, editable=False)
 

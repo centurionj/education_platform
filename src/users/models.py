@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.contrib.auth.models import Group
 
 from .enums import RoleStatuses
 
@@ -9,7 +10,7 @@ class User(AbstractUser):
     image = models.ImageField('Фотография', upload_to='profile_images/', null=True, blank=True)
     is_verify = models.BooleanField('Подтвержден', default=False)
     phone_number = models.CharField('Телефон', max_length=15, null=True, blank=True)
-    groups = models.ManyToManyField('Groups', related_name='user_groups', null=True, blank=True)
+    student_groups = models.ManyToManyField('users.StudentGroups', related_name='student_groups', null=True, blank=True)
     description = models.TextField('Описание', null=True, blank=True)
     grade = models.CharField('Ученая степень', max_length=50, null=True, blank=True)
     role = models.CharField('Роль', max_length=50, choices=RoleStatuses.choices, default=RoleStatuses.STUDENT)
@@ -18,6 +19,17 @@ class User(AbstractUser):
         verbose_name_plural = 'Пользователи'
         verbose_name = 'Пользователь'
         ordering = ['last_name', 'first_name']
+
+    def save(self, *args, **kwargs):
+        if self.is_teacher():
+            self.is_staff = True
+            self.is_superuser = False
+
+        if self.is_admin():
+            self.is_staff = True
+            self.is_superuser = True
+
+        super(User, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.get_full_name()
@@ -58,7 +70,7 @@ class Student(User):
         proxy = True
 
 
-class Groups(models.Model):
+class StudentGroups(models.Model):
     """модель группы"""
     title = models.CharField('Название группы', max_length=255)
     student = models.ManyToManyField(Student, related_name='group_students')

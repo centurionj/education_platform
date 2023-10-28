@@ -3,13 +3,13 @@ from django.core.validators import MinValueValidator
 from django.db import models
 
 from courses.models import Course
-from users.models import Groups
+from users.models import StudentGroups
 
 
 class Test(models.Model):
     name = models.CharField('Название', max_length=255)
     course = models.ForeignKey(Course, on_delete=models.CASCADE, null=True, blank=True)
-    groups = models.ManyToManyField(Groups, related_name='testing', null=True, blank=True)
+    student_groups = models.ManyToManyField(StudentGroups, related_name='testing', null=True, blank=True)
     slug = AutoSlugField(populate_from='name', unique=True, editable=False)
 
     class Meta:
