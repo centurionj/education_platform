@@ -1,5 +1,5 @@
-from django.contrib.auth.views import LoginView, PasswordResetView
 from django.contrib.auth import login
+from django.contrib.auth.views import LoginView, PasswordResetView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import HttpResponseRedirect, redirect
 from django.urls import reverse, reverse_lazy

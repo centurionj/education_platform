@@ -1,6 +1,5 @@
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, Group
 from django.db import models
-from django.contrib.auth.models import Group
 
 from .enums import RoleStatuses
 
@@ -28,6 +27,7 @@ class User(AbstractUser):
         if self.is_admin():
             self.is_staff = True
             self.is_superuser = True
+            self.role = RoleStatuses.ADMIN
 
         super(User, self).save(*args, **kwargs)
 
