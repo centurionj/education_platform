@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from news.models import News
-from common.admin import CKMixin, ImagePreviewMixin
+from common.admin_mixin import CKMixin, ImagePreviewMixin
 
 @admin.register(News)
 class NewsAdmin(CKMixin, ImagePreviewMixin, admin.ModelAdmin):

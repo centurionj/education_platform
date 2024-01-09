@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.models import Group
 
 from users.models import StudentGroup, User
-from common.admin import ImagePreviewMixin
+from common.admin_mixin import ImagePreviewMixin
 
 @admin.register(User)
 class UserAdmin(ImagePreviewMixin, admin.ModelAdmin):

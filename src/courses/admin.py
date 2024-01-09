@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from courses.models import Category, Course
-from common.admin import CKMixin, ImagePreviewMixin
+from common.admin_mixin import CKMixin, ImagePreviewMixin
 
 
 @admin.register(Course)

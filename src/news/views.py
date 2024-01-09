@@ -1,7 +1,7 @@
 from django.views.generic import DetailView
 from django.views.generic.list import ListView
 
-from common.views import TitleMixin
+from common.views_mixin import TitleMixin
 
 from .models import News
 

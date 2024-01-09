@@ -7,7 +7,7 @@ from users.models import User
 from users.enums import RoleStatuses
 
 class Course(models.Model):
-    """модель для программы обучения"""
+    """Модель для программы обучения"""
     title = models.CharField('Название', max_length=255)
     image = models.ImageField('Фотография', upload_to='courses_images/')
     description = models.TextField('Описание')
@@ -40,7 +40,7 @@ class Course(models.Model):
 
 
 class Category(models.Model):
-    """"модель для категорий курсов"""
+    """"Модель для категорий курсов"""
     title = models.CharField('Название', max_length=255, unique=True)
     slug = AutoSlugField(populate_from='title', unique=True, editable=False)
 

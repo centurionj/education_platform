@@ -6,7 +6,7 @@ from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView
 
-from common.views import TitleMixin
+from common.views_mixin import TitleMixin
 from courses.models import Course
 from users.forms import (
     UserChangePasswordForm,

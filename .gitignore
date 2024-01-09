@@ -3,6 +3,7 @@ venv/
 env/
 
 media/
+media_volume/
 
 # локальные настройки
 local_settings.py
