@@ -1,8 +1,8 @@
 from django.contrib import admin
 
-from .models import Lecture
-
+from lectures.models import Lecture
+from common.admin import CKMixin
 
 @admin.register(Lecture)
-class CourseAdmin(admin.ModelAdmin):
+class CourseAdmin(CKMixin, admin.ModelAdmin):
     list_display = ('id', 'course', 'title', 'file', )

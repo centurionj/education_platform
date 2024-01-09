@@ -43,7 +43,7 @@ Page content START -->
 								<!-- Content -->
 								<!-- Info -->
 								<ul class="list-inline mb-1">
-									<li class="list-inline-item h6 fw-light mb-1 mb-sm-0"><i class="fas fa-table text-orange me-2"></i>{{course.description|slice:"40"}}...</li>
+									<li class="list-inline-item h6 fw-light mb-1 mb-sm-0"><i class="fas fa-table text-orange me-2"></i>{{course.description|safe|striptags|slice:":70"}}...</li>
 								</ul>
 								<!-- Rating -->
 								<ul class="list-inline mb-0">

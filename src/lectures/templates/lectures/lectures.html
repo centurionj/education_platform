@@ -58,7 +58,11 @@
                 <hr class="my-5">
             </div>
             <!-- Page content -->
+                {% if lecture.file %}
             <iframe src="{{ lecture.file.url }}#toolbar=0" style="width: 100%; height: 100vh;" frameborder="0" allowfullscreen></iframe>
+                {% else %}
+            {{lecture.content | safe}}
+                {% endif %}
             {% endfor %}
         </div>
     </div>

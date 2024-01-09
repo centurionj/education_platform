@@ -58,9 +58,9 @@ class DashboardListView(TitleMixin, ListView):
 
     def get_queryset(self):
         user = self.request.user
-        student_group = user.student_groups.first()
+        student_group = user.student_group
         if student_group:
-            return student_group.courses.all()
+            return Course.objects.filter(student_group=student_group)
         return Course.objects.none()
 
 

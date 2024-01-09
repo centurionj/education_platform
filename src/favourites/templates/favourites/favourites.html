@@ -36,7 +36,7 @@
 										</div>
 										<!-- Title -->
 										<h5 class="card-title fw-normal"><a href="{% url 'course_detail' slug=favourite.course.slug %}">{{favourite.course.title}}</a></h5>
-										<p class="mb-2 text-truncate-2">{{favourite.course.description|slice:"45"}}...</p>
+										<p class="mb-2 text-truncate-2">{{favourite.course.description|safe|striptags|slice:":70"}}...</p>
 									</div>
 									<!-- Card footer -->
 									<div class="card-footer pt-0 pb-3">

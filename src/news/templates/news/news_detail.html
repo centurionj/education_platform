@@ -15,7 +15,7 @@ Page banner video START -->
 			<!-- Course video START -->
 			<div class="col-12">
 				<div class="video-player rounded-3">
-                     <img src="{{news.file.url}}" class="card-img-top" alt="book image">
+                     <img src="{{news.image.url}}" class="card-img-top" alt="book image">
                 </div>
             </div>
         </div>
@@ -51,7 +51,7 @@ Page content START -->
 							<div class="tab-pane fade show active" id="course-pills-1" role="tabpanel" aria-labelledby="course-pills-tab-1">
 								<!-- Course detail START -->
 								<h5 class="mb-3">Содержание</h5>
-								<p class="mb-3">{{ news.content }}</p>
+								<p class="mb-3">{{ news.content | safe}}</p>
 							</div>
                         </div>
 						<!-- Tab contents END -->

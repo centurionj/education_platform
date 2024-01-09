@@ -9,30 +9,15 @@ class User(AbstractUser):
     image = models.ImageField('Фотография', upload_to='profile_images/', null=True, blank=True)
     is_verify = models.BooleanField('Подтвержден', default=False)
     phone_number = models.CharField('Телефон', max_length=15, null=True, blank=True)
-    student_groups = models.ManyToManyField('users.StudentGroups', related_name='student_groups', null=True, blank=True)
+    student_group = models.ForeignKey(
+        'users.StudentGroup',
+        related_name='students',
+        null=True, blank=True,
+        on_delete=models.CASCADE
+    )
     description = models.TextField('Описание', null=True, blank=True)
     grade = models.CharField('Ученая степень', max_length=50, null=True, blank=True)
     role = models.CharField('Роль', max_length=50, choices=RoleStatuses.choices, default=RoleStatuses.STUDENT)
-
-    class Meta:
-        verbose_name_plural = 'Пользователи'
-        verbose_name = 'Пользователь'
-        ordering = ['last_name', 'first_name']
-
-    def save(self, *args, **kwargs):
-        if self.is_teacher():
-            self.is_staff = True
-            self.is_superuser = False
-
-        if self.is_admin():
-            self.is_staff = True
-            self.is_superuser = True
-            self.role = RoleStatuses.ADMIN
-
-        super(User, self).save(*args, **kwargs)
-
-    def __str__(self):
-        return self.get_full_name()
 
     def is_teacher(self):
         return self.role == RoleStatuses.TEACHER
@@ -43,37 +28,56 @@ class User(AbstractUser):
     def is_admin(self):
         return self.role == RoleStatuses.ADMIN
 
-
-class TeacherManager(models.Manager):
-    """менеджер объектов преподов"""
-    def get_queryset(self):
-        return super().get_queryset().filter(role=RoleStatuses.TEACHER)
-
-
-class StudentManager(models.Manager):
-    """менеджер объектов студентов"""
-    def get_queryset(self):
-        return super().get_queryset().filter(role=RoleStatuses.STUDENT)
-
-
-class Teacher(User):
-    objects = TeacherManager()
-
     class Meta:
-        proxy = True
+        verbose_name_plural = 'Пользователи'
+        verbose_name = 'Пользователь'
+        ordering = ['last_name', 'first_name', 'role']
 
 
-class Student(User):
-    objects = StudentManager()
+    def __str__(self):
+        return self.get_full_name()
 
-    class Meta:
-        proxy = True
+    def save(self, *args, **kwargs):
+        if self.is_teacher():
+            self.is_staff = True
+            self.is_superuser = False
+            self.is_verify = True
+
+        if self.is_superuser:
+            self.is_staff = True
+            self.is_verify = True
+            self.role = RoleStatuses.ADMIN
+
+        super(User, self).save(*args, **kwargs)
 
 
-class StudentGroups(models.Model):
+# class Teacher(User):
+#     description = models.TextField('Описание', null=True, blank=True)
+#     grade = models.CharField('Ученая степень', max_length=50, null=True, blank=True)
+#
+#     class Meta:
+#         verbose_name_plural = 'Преподаватели'
+#         verbose_name = 'Преподаватель'
+#         ordering = ['last_name', 'first_name']
+#
+#
+# class Student(User):
+#     student_group = models.ForeignKey(
+#         'users.StudentGroup',
+#         related_name='students',
+#         null=True, blank=True,
+#         on_delete=models.CASCADE
+#     )
+#
+#     class Meta:
+#         verbose_name_plural = 'Студенты'
+#         verbose_name = 'Студент'
+#         ordering = ['last_name', 'first_name']
+
+
+class StudentGroup(models.Model):
     """модель группы"""
     title = models.CharField('Название группы', max_length=255)
-    student = models.ManyToManyField(Student, related_name='group_students')
 
     class Meta:
         verbose_name_plural = 'Группы'

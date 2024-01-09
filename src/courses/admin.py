@@ -1,11 +1,22 @@
 from django.contrib import admin
 
 from courses.models import Category, Course
+from common.admin import CKMixin, ImagePreviewMixin
 
 
 @admin.register(Course)
-class CourseAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'description', 'teacher', 'category',)
+class CourseAdmin(CKMixin, ImagePreviewMixin, admin.ModelAdmin):
+    list_display = ('id', 'title', 'teacher', 'category',)
+    fields = [
+        'image',
+        'image_preview',
+        'title',
+        'description',
+        'teacher',
+        'student_group',
+        'category',
+    ]
+    readonly_fields = ['image_preview']
 
 
 @admin.register(Category)

@@ -53,19 +53,20 @@ class UserEditForm(UserChangeForm):
         'class': 'form-control', 'placeholder': '{{user.first_name}}', 'value': '{{user.first_name}}'}))
     last_name = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control ', 'placeholder': '{{user.last_name}}', 'value': '{{user.last_name}}'}))
-    username = forms.CharField(widget=forms.TextInput(attrs={
-        'class': 'form-control', 'placeholder': '{{user.username}}', 'value': '{{user.username}}'}))
+    # username = forms.CharField(widget=forms.TextInput(attrs={
+    #     'class': 'form-control', 'placeholder': '{{user.username}}', 'value': '{{user.username}}'}))
     email = forms.EmailField(widget=forms.EmailInput(attrs={
         'class': 'form-control', 'placeholder': 'E-mail', '{{user.email}}': '{{user.email}}'}))
     phone_number = forms.CharField(widget=forms.TextInput(attrs={
-        'class': 'form-control', 'placeholder': '{{user.phone_number}}', 'value': '{{user.phone_number}}'}), required=False)
-    description = forms.CharField(widget=forms.TextInput(attrs={
-        'class': 'form-control', 'placeholder': 'Описание', 'value': '{{user.description}}'}), required=False)
+        'class': 'form-control', 'placeholder': '+7-999-888-77-66', 'value': '{{user.phone_number}}'}), required=False)
+    # description = forms.CharField(widget=forms.TextInput(attrs={
+    #     'class': 'form-control', 'placeholder': 'Описание', 'value': '{{user.description}}'}), required=False)
     image = forms.ImageField(widget=forms.FileInput(attrs={'id': 'uploadfile-1', 'class': 'form-control d-none'}), required=False)
 
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'username', 'email', 'phone_number', 'description', 'image')
+        # fields = ('first_name', 'last_name', 'username', 'email', 'phone_number', 'description', 'image')
+        fields = ('first_name', 'last_name', 'email', 'phone_number','image')
 
     def save(self, commit=True):
         user = super(UserEditForm, self).save(commit=True)
