@@ -3,6 +3,7 @@ venv/
 env/
 
 media/
+media_volume/
 
 # локальные настройки
 local_settings.py
@@ -17,9 +18,8 @@ __pycache__/
 # IDE
 .idea/
 
-# Pipenv
-Pipfile
-Pipfile.lock
-
 # Файлы окружения
 .env
+
+# База данных
+db.sqlite3

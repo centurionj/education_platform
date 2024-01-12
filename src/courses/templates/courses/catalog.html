@@ -1,0 +1,92 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}
+{{title}}
+{% endblock %}
+
+{% block body %}
+
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+
+
+
+<!-- =======================
+Page content START -->
+<section class="pt-5">
+	<div class="container">
+		<!-- Course list START -->
+		<div class="row g-4 justify-content-center">
+			{% for course in object_list %}
+
+			<!-- Card item START -->
+			<div class="col-lg-10 col-xxl-6">
+				<div class="card rounded overflow-hidden shadow">
+					<div class="row g-0">
+						<!-- Image -->
+						<div class="col-md-4">
+							<a href="{% url 'course_detail' slug=course.slug %}"><img src="{{ course.image.url }}" alt="card image"></a>
+						</div>
+
+						<!-- Card body -->
+						<div class="col-md-8">
+							<div class="card-body">
+								<!-- Title -->
+								<div class="d-flex justify-content-between mb-2">
+									<h5 class="card-title mb-0"><a href="{% url 'course_detail' slug=course.slug %}">{{course.title}}</a></h5>
+									<!-- Wishlist icon -->
+									<a href="{% url 'favourites_update' course_id=course.id %}"><i class="bi bi-heart-fill"></i></a>
+								</div>
+                                <div>
+                                    <a href="" class="badge bg-success bg-opacity-10 text-success">{{course.category}}</a>
+                                </div><br>
+								<!-- Content -->
+								<!-- Info -->
+								<ul class="list-inline mb-1">
+									<li class="list-inline-item h6 fw-light mb-1 mb-sm-0"><i class="fas fa-table text-orange me-2"></i>{{course.description|safe|striptags|slice:":70"}}...</li>
+								</ul>
+								<!-- Rating -->
+								<ul class="list-inline mb-0">
+									<li class="list-inline-item h6 fw-light mb-1 mb-sm-0"><i class="fas fa-table text-orange me-2"></i>{{ course.lecture_set.count }} лекций</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+		<!-- Course list END -->
+
+		<!-- Pagination START -->
+		{% if is_paginated %}
+		<div class="col-12">
+			<nav class="mt-4 d-flex justify-content-center" aria-label="навигация">
+				<ul class="pagination pagination-primary-soft d-inline-block d-md-flex rounded mb-0">
+					{% if page_obj.has_previous %}
+						<li class="page-item mb-0"><a class="page-link" href="?page=1" tabindex="-1"><i class="bi bi-caret-left-fill" style="color: #2156b0;"></i></a></li>
+					{% endif %}
+					{% for page in paginator.page_range %}
+						<li class="page-item mb-0{% if page == page_obj.number %} active{% endif %}">
+							<a class="page-link" href="?page={{ page }}">{{ page }}</a>
+						</li>
+					{% endfor %}
+					{% if page_obj.has_next %}
+						<li class="page-item mb-0"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}"><i class="fbi bi-caret-right-fill" style="color: #2156b0;"></i></a></li>
+					{% endif %}
+				</ul>
+			</nav>
+		</div>
+		<!-- Pagination END -->
+		{% endif %}
+
+	</div>
+</section>
+<!-- =======================
+Page content END -->
+
+</main>
+<script src="{% static 'main/scripts/choices.min.js' %}"></script>
+<script src="{% static 'main/scripts/functions_2.js' %}"></script>
+<!-- **************** MAIN CONTENT END **************** -->
+{% endblock %}

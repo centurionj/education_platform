@@ -1,0 +1,96 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}
+{{title}}
+{% endblock %}
+
+{% block body %}
+
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+	<section class="p-0 d-flex align-items-center position-relative overflow-hidden">
+	
+		<div class="container-fluid">
+			<div class="row">
+				<!-- left -->
+				<div class="col-12 col-lg-6 d-md-flex align-items-center justify-content-center bg-primary bg-opacity-10 vh-lg-100">
+					<div class="p-3 p-lg-5">
+						<!-- Title -->
+						<div class="text-center">
+							<h2 class="fw-bold">Добро пожаловать в наше комьюнити</h2>
+							<p class="mb-0 h6 fw-light">Давай изучим что-то новенькое!</p>
+						</div>
+						<!-- SVG Image -->
+						<img src="{% static 'main/img/02.svg' %}" class="mt-5" alt="">
+					</div>
+				</div>
+
+				<!-- Right -->
+				<div class="col-12 col-lg-6 m-auto">
+					<div class="row my-5">
+						<div class="col-sm-10 col-xl-8 m-auto">
+							<!-- Title -->
+							<span class="mb-0 fs-1">👋</span>
+							{% if form.errors %}
+							<h1 class="fs-2">Ошибка!</h1>
+							<p class="lead mb-4">{{ form.errors }}</p>
+							{% else %}
+							<h1 class="fs-2">Wellcome!</h1>
+							<p class="lead mb-4">Мы рады видеть вас! Войдите в свой аккаунт.</p>
+							{% endif %}
+
+							<!-- Form START -->
+							<form action="{% url 'login' %}" method="post">
+								{% csrf_token %}
+								<!-- Username -->
+								<div class="mb-4">
+									<label for="exampleInputEmail1" class="form-label">Логин *</label>
+									<div class="input-group input-group-lg">
+										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="bi bi-person-fill"></i></span>
+										{{form.username}}
+									</div>
+								</div>
+								<!-- Password -->
+								<div class="mb-4">
+									<label for="inputPassword5" class="form-label">Пароль *</label>
+									<div class="input-group input-group-lg">
+										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="bi bi-key-fill"></i></span>
+										{{form.password}}
+									</div>
+								</div>
+								<!-- Check box -->
+								<div class="mb-4 d-flex justify-content-between mb-4">
+									<div class="form-check">
+										<input type="checkbox" class="form-check-input" id="exampleCheck1">
+										<label class="form-check-label" for="exampleCheck1">Запомнить вход</label>
+									</div>
+									<div class="text-primary-hover">
+										<a href="https://eduport.webestica.com/forgot-password.html" class="text-secondary">
+											<u>Забыли пароль?</u>
+										</a>
+									</div>
+								</div>
+								<!-- Button -->
+								<div class="align-items-center mt-0">
+									<div class="d-grid">
+										<button class="btn btn-primary mb-0" type="submit">Войти</button><br>
+										<a href="" class="btn btn-primary mb-0"><i class="fab fa-fw fa-google text-white me-2"></i>Вход с Google</a>
+
+									</div>
+								</div>
+							</form>
+							<!-- Form END -->
+
+							<!-- Sign up link -->
+							<div class="mt-4 text-center">
+								<span>Еще нет аккаунта? <a href="{% url 'registration' %}">Зарегистрироваться</a></span>
+							</div>
+						</div>
+					</div> <!-- Row END -->
+				</div>
+			</div> <!-- Row END -->
+		</div>
+	</section>
+</main>
+<!-- **************** MAIN CONTENT END **************** -->
+{% endblock %}
